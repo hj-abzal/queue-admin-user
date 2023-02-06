@@ -6,3 +6,18 @@ body {
     font-family: -apple-system, 'Segoe UI', 'Roboto', 'Oxygen',
     sans-serif;
 }
+
+
+@layer components {
+    .btn {
+        @apply h-14 rounded-lg bg-accent text-white disabled:opacity-40;
+    }
+
+    .card {
+        @apply w-[736px] flex gap-7 bg-white mb-0 mx-auto px-7 py-6 rounded-2xl shadow-[0_22px_47px_rgba(28,82,121,0.22)] md:flex-col md:w-[375px]
+    }
+
+    .card-section {
+        @apply flex flex-col flex-1
+    }
+}
