@@ -22,16 +22,10 @@ export const Header = () => {
     }, [location]);
 
     return (
-        <div className="w-full h-12 flex justify-between px-12 pt-7 mb-[2.3rem] md:px-5">
-            <div className='flex items-center cursor-pointer' onClick={onClickBack}>
-                {
-                    isBack && <>
-                        <ArrowIcon/>
-                        <span className="ml-4 text-accent-light md:hidden">Назад</span>
-                    </>
-                }
+        <div className="sm: w-full h-12 flex px-12 pt-7 mb-[2.3rem] md:px-5">
+            <div className={'sm: basis-4/5'}>
+                <LogoIcon/>
             </div>
-            <LogoIcon/>
             <Language/>
         </div>
     );
