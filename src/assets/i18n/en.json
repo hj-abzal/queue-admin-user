@@ -1,34 +1,7 @@
 {
-  "PAYMENT_FORM": {
-    "TITLE": "Payment",
-    "CARD_NUMBER": "Card number",
-    "CARD_HOLDER": "First and last name",
-    "CARD_HOLDER_HINT": "As on the card — in Latin",
-    "CARD_EXPIRY": "Expiration date",
-    "CARD_CVC": "CVV/CVC code",
-    "EMAIL": "Email",
-    "EMAIL_HINT": "We will send a purchase receipt",
-    "PAY": "Pay",
-    "BACK": "Back",
-    "ERROR": {
-      "CARD_NUMBER": "Invalid card number",
-      "CARD_HOLDER": "Invalid cardholder name",
-      "CARD_EXPIRY": "Invalid card expiration date",
-      "CARD_QVC": "Invalid CVV/CVC code",
-      "EMAIL": "Invalid email address"
-    }
-  },
-  "SUCCESS": {
-    "TITLE": "Operation completed successfully",
-    "DETAILS": "Operation Details",
-    "AMOUNT": "Order Amount",
-    "ORDER": "Order No.",
-    "SUPPLIER": "Supplier",
-    "COMMENT": "Order",
-    "BACK": "Back to the store"
-  },
-  "ERROR": {
-    "TITLE": "Payment error",
-    "RETRY": "Try again"
+  "ORDERS": {
+    "CREATE": "Create",
+    "DONE": "Done",
+    "NOT_READY": "Getting ready"
   }
 }

@@ -31,13 +31,13 @@ export const Language: React.FC = () => {
     })
 
     return (
-        <div>
+        <div className={'flex'}>
             {
                 languages.map((language, index) => {
                     return (
                         <span
                             key={index}
-                            className={`text-accent-light mx-3 font-medium text-base leading-6 cursor-pointer ${i18n.language === language.code ? 'opacity-100' : 'opacity-50 md:hidden'}`}
+                            className={`flex items-center text-accent-light mx-2 font-medium text-base leading-6 cursor-pointer ${i18n.language === language.code ? 'opacity-100' : 'opacity-50 md:hidden'}`}
                             onClick={() => onClick(language.code)}
                         >
                             {language.name}
@@ -45,14 +45,14 @@ export const Language: React.FC = () => {
                     )
                 })
             }
-            {isShow && <div className="relative">
-                <div className="hidden md:block absolute top-0 right-0">
-                    <div className="bg-white rounded-md shadow-lg flex flex-col py-3.5">
+            {isShow && <div>
+                <div className="hidden md:block top-8 right-1">
+                    <div className="bg-white rounded-md shadow-lg flex py-4.5 ml-2">
                         {languages.filter(ln => i18n.language !== ln.code).map((language, index) => {
                             return (
                                 <span
                                     key={index}
-                                    className={`language  w-[82px] h-[45px] font-bold text-lg leading-6 text-black flex items-center justify-center cursor-pointer`}
+                                    className={`language h-[45px] font-bold text-lg border-2 p-2 leading-6 text-black flex items-center justify-center cursor-pointer`}
                                     onClick={() => i18n.changeLanguage(language.code)}
                                 >
                                     {language.name}

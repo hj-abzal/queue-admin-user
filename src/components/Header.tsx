@@ -1,32 +1,15 @@
-import React, {useEffect} from 'react';
-import ArrowIcon from '../assets/icons/arrow.svg';
-import LogoIcon from '../assets/icons/logo.svg';
-import {useLocation} from "react-router-dom";
+import React from 'react';
+import {useTranslation} from "react-i18next";
 import {Language} from "./Language";
 
-export const Header = () => {
-    const [isBack, setIsBack] = React.useState(false);
-    let location = useLocation();
+export const Header: React.FC = () => {
 
-    const onClickBack = () => {
-        window.history.back();
-    }
-
-    useEffect(() => {
-        if (location.pathname === '/') {
-            setIsBack(true)
-        } else {
-            if (isBack)
-                setIsBack(false)
-        }
-    }, [location]);
+    const {t} = useTranslation();
 
     return (
-        <div className="sm: w-full h-12 flex px-12 pt-7 mb-[2.3rem] md:px-5">
-            <div className={'sm: basis-4/5'}>
-                <LogoIcon/>
-            </div>
+        <div className={'flex justify-between mt-5 mr-8 ml-8'}>
             <Language/>
+            <button className="rounded-lg bg-accent text-white disabled:opacity-40 pr-6 pl-6 p-1">{t('ORDERS.CREATE')}</button>
         </div>
     );
 };

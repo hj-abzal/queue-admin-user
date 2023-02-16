@@ -2,11 +2,12 @@ import {applyMiddleware, combineReducers, compose, createStore} from "redux";
 import thunk from 'redux-thunk';
 import {authReducer} from "./reducers/authReducer";
 import {toasterReducer} from "./reducers/toasterReducer";
+import {ordersReducer} from "./reducers/orders-reducer";
 
 export const rootReducer = combineReducers({
     auth: authReducer,
-    appReducer: toasterReducer
-
+    appReducer: toasterReducer,
+    orders: ordersReducer
 })
 
 export type AppStateType = ReturnType<typeof rootReducer>;

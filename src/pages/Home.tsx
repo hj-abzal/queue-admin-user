@@ -5,14 +5,17 @@ import {Toaster} from "../components/Toaster";
 import {useSelector} from "react-redux";
 import {AppStateType} from "../store/store";
 import {ToasterType} from "../store/reducers/toasterReducer";
+import {Navbar} from "../components/Navbar";
 
-export const Home = () => {
+
+export const Home: React.FC = () => {
     const toasterMessage = useSelector<AppStateType,string>(state => state.appReducer.toasterMessage)
     const toasterType = useSelector<AppStateType,ToasterType>(state => state.appReducer.toasterType)
     return (
-        <div className="w-full flex flex-col justify-between items-center h-screen">
+        <div className={'flex flex-col h-full w-full'}>
             <Header/>
             <Outlet/>
+            <Navbar/>
             <Toaster innerText={toasterMessage} type={toasterType}/>
         </div>
     );
