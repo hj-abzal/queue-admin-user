@@ -13,6 +13,20 @@
   "ORDERS": {
     "CREATE": "Жасау",
     "DONE": "Дайын",
-    "NOT_READY": "Дайындалуда"
+    "NOT_READY": "Дайындалуда",
+    "BACK": "Артқа"
+  },
+  "ORDERS_INFO": {
+    "CHANGE": "Тапсырысты өңдеу",
+    "STATUS": "Мәртебесі",
+    "DONE": "Дайын",
+    "NOT_READY": "Дайындалуда",
+    "QR": "Көрсету QR",
+    "DELETE": "Жою"
+  },
+  "ORDERS_CREATE": {
+    "CREATE_PAGE": "Тапсырыс жасау",
+    "WAITING": "Күтуде",
+    "CREATE_ORDER": "Тапсырыс жасау"
   }
 }

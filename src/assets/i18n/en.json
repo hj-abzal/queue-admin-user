@@ -14,6 +14,20 @@
   "ORDERS": {
     "CREATE": "Create",
     "DONE": "Done",
-    "NOT_READY": "Getting ready"
+    "NOT_READY": "Getting ready",
+    "BACK": "Back"
+  },
+  "ORDERS_INFO": {
+    "CHANGE": "Order Editing",
+    "STATUS": "Status",
+    "DONE": "Done",
+    "NOT_READY": "Preparing",
+    "QR": "Show QR",
+    "DELETE": "Delete"
+  },
+  "ORDERS_CREATE": {
+    "CREATE_PAGE": "Creating an order",
+    "WAITING": "Waiting",
+    "CREATE_ORDER": "Create an order"
   }
 }

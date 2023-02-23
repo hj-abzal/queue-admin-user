@@ -1,33 +1,55 @@
 import React from 'react';
-import {OrdersInitStateType} from "../store/reducers/orders-reducer";
-import {useSelector} from "react-redux";
-import {AppStateType} from "../store/store";
-import {useTranslation} from "react-i18next";
+import {OrdersType} from "../store/reducers/orders-reducer";
+import {useNavigate} from "react-router-dom";
 
 
 type TableProps = {
-    isDone: boolean
+    orders: OrdersType[],
+    title: string,
+    variant: 'primary' | 'secondary'
 }
 
-export const Table = (props: TableProps) => {
+export const Table: React.FC<TableProps> = ({orders, title, variant}) => {
 
-    const {t} = useTranslation();
-    const orders = useSelector<AppStateType, OrdersInitStateType>(state => state.orders)
-    const mainClass = 'flex text-center font-medium justify-center text-[white] overflow-y-scroll p-2.5 rounded-[20px_20px_0_0] border-[none]'
-    const borderClass = 'flex flex-row border w-80 justify-evenly flex-wrap overflow-y-scroll rounded-[0_0_8px_8px] border-solid border-2 p-1'
-    const ordersClass = 'h-20 font-bold p-2 min-w-[80px] text-[20px] bg-white flex justify-center items-center shadow-[0_2px_5px_0_rgba(0,0,0,0.4)]  m-[5px] px-[5px] rounded-[10px] border-2 border-[solid]'
+    const classes = {
+        primary: {
+            table: 'flex justify-center basis-[68%] ml-2 mt-10',
+            main:  'flex text-center font-medium justify-center text-[white] overflow-y-scroll p-2.5 rounded-[20px_20px_0_0] border-[none] bg-accent',
+            border: 'flex flex-row border w-80 justify-evenly flex-wrap overflow-y-scroll rounded-[0_0_8px_8px] border-solid border-2 p-1 h-[200px] border-[#fe540e]',
+            order: 'h-20 font-bold p-2 min-w-[80px] text-[20px] bg-white flex justify-center items-center shadow-[0_2px_5px_0_rgba(0,0,0,0.4)]  m-[5px] px-[5px] rounded-[10px] border-2 border-[#fe540e]'
+        },
+        secondary: {
+            table: 'flex justify-center basis-[68%] ml-2 mt-10 mb-[100px]',
+            main:  'flex text-center font-medium justify-center text-[white] overflow-y-scroll p-2.5 rounded-[20px_20px_0_0] border-[none] bg-[green]',
+            border: 'flex flex-row border w-80 justify-evenly flex-wrap overflow-y-scroll rounded-[0_0_8px_8px] border-solid border-2 p-1 h-[200px] border-[green]',
+            order: 'h-20 font-bold p-2 min-w-[80px] text-[20px] bg-white flex justify-center items-center shadow-[0_2px_5px_0_rgba(0,0,0,0.4)]  m-[5px] px-[5px] rounded-[10px] border-2 border-[green]'
+        }
+    }
+
+    const navigate = useNavigate()
+
+    const orderInfo = (orderId: number) => {
+       navigate(`/home/${45}/orders/${orderId}`)
+    }
 
     return (
-        <div className={'flex justify-center basis-[68%] ml-2 mb-28 mt-16'}>
+        <div className={classes[variant].table}>
             <div className={'flex flex-col'}>
                 <div>
                     <div
-                        className={props.isDone ? `${mainClass} bg-[green]` : `${mainClass} bg-accent`}>{props.isDone ? t('ORDERS.DONE') : t('ORDERS.NOT_READY')}</div>
+                        className={classes[variant].main}>{title}</div>
                     <div
-                        className={props.isDone ? `${borderClass} border-[green]` : `${borderClass} border-[#fe540e]`}>
-                        {orders.orders.map((t) => {
-                            if (t.is_ready === props.isDone) return <button key={t.id}
-                            className={props.isDone ? `${ordersClass} border-[green]` : `${ordersClass} border-[#fe540e]`}>{t.key}</button>})}</div>
+                        className={classes[variant].border}>
+                        {orders.map((t) => {
+                            if (t.is_ready) return <button key={t.id}
+                                                           className={classes[variant].order}
+                                                           onClick={() => orderInfo(t.id)}>{t.key}
+                            </button>
+                            if (!t.is_ready) return <button key={t.id}
+                                                            className={classes[variant].order}
+                                                            onClick={() => orderInfo(t.id)}>{t.key}
+                            </button>
+                        })}</div>
                 </div>
             </div>
         </div>

@@ -13,6 +13,20 @@
   "ORDERS": {
     "CREATE": "Создать",
     "DONE": "Готово",
-    "NOT_READY": "Готовится"
+    "NOT_READY": "Готовится",
+    "BACK": "Назад"
+  },
+  "ORDERS_INFO": {
+    "CHANGE": "Редактирование заказа",
+    "STATUS": "Статус",
+    "DONE": "Готово",
+    "NOT_READY": "Готовится",
+    "QR": "Показать QR",
+    "DELETE": "Удалить"
+  },
+  "ORDERS_CREATE": {
+    "CREATE_PAGE": "Создание заказа",
+    "WAITING": "В Ожидании",
+    "CREATE_ORDER": "Создать заказ"
   }
 }

@@ -22,8 +22,8 @@ const instance = axios.create({
 
 export const authApi = {
     login: (user: UserLogging) => new Promise((resolve, reject) => {
-        if (user.email === 'tataev.shokan@gmail.com' && user.password === 'aaa123') {
-            resolve({email:'tataev.shokan@gmail.com', password:'123',post:'cashier',restaurantId:1})
+        if (user.email === '111@mail.ru' && user.password === '1111111') {
+            resolve({email:'111@mail.ru', password:'1111111',post:'cashier', restaurantId: 45})
         } else {
             reject('error')
         }
@@ -31,7 +31,9 @@ export const authApi = {
 }
 
 export const ordersAPI = {
-    getAllOrders: (id: number) => instance.get<ResponseOrdersType>(`restaurants/${id}/orders`).then(res => res.data.orders)
+    getAllOrders: (id: number) => instance.get<ResponseOrdersType>(`restaurants/${id}/orders`).then(res => res.data.orders),
+    getOrder: (restaurantId: number, orderId: number) => instance.get(`restaurants/${restaurantId}/orders/${orderId}`).then(res => res.data),
+    createOrder: (restaurantId: number) => instance.post(`orders`, {restaurant_id: restaurantId}).then(res => res.data),
 }
 
 

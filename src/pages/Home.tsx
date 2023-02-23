@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import {Header} from "../components/Header";
 import {Outlet, useNavigate} from "react-router-dom";
 import {Navbar} from "../components/Navbar";
 
@@ -14,7 +13,6 @@ export const Home: React.FC = () => {
     }, [])
     return (
         <div className={'flex flex-col h-full w-full'}>
-            <Header/>
             <Outlet/>
             <Navbar/>
         </div>

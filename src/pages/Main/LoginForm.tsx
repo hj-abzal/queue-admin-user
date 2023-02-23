@@ -4,7 +4,7 @@ import {useFormik} from "formik";
 import {useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
-import {setUserTC} from "../../store/reducers/authReducer";
+import {setUserTC, UserType} from "../../store/reducers/authReducer";
 import {AppStateType} from "../../store/store";
 
 const validate = ({password, email}: initStateType) => {
@@ -28,10 +28,12 @@ type initStateType = {
 
 
 export const LoginForm: React.FC = () => {
+
     const {t} = useTranslation();
     const dispatch = useDispatch<any>()
     const navigate = useNavigate()
     const isLogged = useSelector<AppStateType, boolean>(state => state.auth.isLogged)
+    const user = useSelector<AppStateType, UserType>(state => state.auth.user)
     const {values, handleSubmit, handleChange, touched, errors, setFieldValue, setTouched} = useFormik({
         initialValues: {
             password: '',
@@ -42,7 +44,6 @@ export const LoginForm: React.FC = () => {
             dispatch(setUserTC(values,t))
         },
     });
-
 
     const onPasswordChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         e.currentTarget.value = latinRegex(e.currentTarget.value);
@@ -66,7 +67,7 @@ export const LoginForm: React.FC = () => {
     const latinRegex = (v: string) => v.replace(/[^A-Z-0-9_]/gi, "");
     useEffect(() => {
         if (isLogged) {
-            navigate('/home/orders')
+            navigate(`/home/${user.restaurantId}`)
         }
     }, [isLogged])
     return (
