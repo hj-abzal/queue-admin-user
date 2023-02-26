@@ -26,7 +26,8 @@ export const App: React.FC = () => {
                     <Route path={'/home/profile'} element={<PaymentError/>}/>
                 </Route>
 
-                <Route path={'/'} element={<Navigate to={'/home/login'}/>}/>
+                <Route path={'/'} element={<Navigate to={'/login'}/>}/>
+                <Route path={'*'} element={<Navigate to={'/login'}/>}/>
             </Routes>
         </div>
     )

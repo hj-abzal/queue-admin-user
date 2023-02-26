@@ -1,4 +1,16 @@
 {
+  "LOGIN_FORM": {
+    "LOG_IN": "Log in",
+    "EMAIL": "Email",
+    "EMAIL_HINT": "Enter your email for authorization",
+    "PASSWORD": "Password",
+    "BACK": "Back",
+    "ERROR": {
+      "INVALID_PASSWORD": "Invalid password",
+      "EMAIL": "Invalid email address"
+    }
+  },
+
   "ORDERS": {
     "CREATE": "Create",
     "DONE": "Done",

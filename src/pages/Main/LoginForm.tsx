@@ -14,9 +14,9 @@ const validate = ({password, email}: initStateType) => {
     }
 
     if (!email) {
-        errors = {...errors, email: "PAYMENT_FORM.ERROR.EMAIL"};
+        errors = {...errors, email: "LOGIN_FORM.ERROR.EMAIL"};
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
-        errors = {...errors, email: "PAYMENT_FORM.ERROR.EMAIL"};
+        errors = {...errors, email: "LOGIN_FORM.ERROR.EMAIL"};
     }
     return errors;
 }
@@ -39,7 +39,7 @@ export const LoginForm: React.FC = () => {
         },
         validate,
         onSubmit: values => {
-            dispatch(setUserTC(values))
+            dispatch(setUserTC(values,t))
         },
     });
 
@@ -63,7 +63,7 @@ export const LoginForm: React.FC = () => {
 
 
     const emailRegex = (v: string) => v.replace(/[^A-Z-0-9_.-@]/gi, "").replace(/;/i, "");
-    const latinRegex = (v: string) => v.replace(/[^A-Z-0-9_ ]/gi, "");
+    const latinRegex = (v: string) => v.replace(/[^A-Z-0-9_]/gi, "");
     useEffect(() => {
         if (isLogged) {
             navigate('/home/orders')
@@ -73,8 +73,8 @@ export const LoginForm: React.FC = () => {
         <form className="card-section" onSubmit={handleSubmit}>
             <div>
                 <Input
-                    label={t("PAYMENT_FORM.EMAIL")}
-                    helperText={'Введите вашу почту для авторизации'}
+                    label={t("LOGIN_FORM.EMAIL")}
+                    helperText={t("LOGIN_FORM.EMAIL_HINT")}
                     name="email"
                     onChange={onEmailChange}
                     value={values.email}
@@ -82,7 +82,7 @@ export const LoginForm: React.FC = () => {
                 />
 
                 <Input
-                    label={'Пароль'}
+                    label={t("LOGIN_FORM.PASSWORD")}
                     placeholder={'********************'}
                     name="password"
                     type={'password'}
@@ -95,7 +95,7 @@ export const LoginForm: React.FC = () => {
                 className='btn'
                 onClick={setTouchedAll}
                 type="submit">
-                {'Войти'}
+                {t('LOGIN_FORM.LOG_IN')}
             </button>
         </form>
     );

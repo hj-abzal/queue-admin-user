@@ -1,7 +1,6 @@
 import {Dispatch} from "redux";
 import {authApi} from "../../api/api";
-import {showToaster} from "./toasterReducer";
-import {useNavigate} from "react-router-dom";
+import {toast} from "../../components/Toast/ToastManager";
 
 export type ActionType =
     | ReturnType<typeof setLogged>
@@ -18,12 +17,13 @@ export type UserLogging = {
 export type UserType = {
     email: string,
     password: string,
-    post: string
+    post: string,
+    restaurantId:number
 }
 
 const initState: initStateType = {
     isLogged: false,
-    user: {email: '', password: '', post: ''}
+    user: {email: '', password: '', post: '',restaurantId:0}
 }
 export const authReducer = (state: initStateType = initState, action: ActionType) => {
     switch (action.type) {
@@ -48,17 +48,19 @@ export const setUser = (user: UserType) => (
 )
 
 //THUNK CREATORS
-export const setUserTC = (user: UserLogging) => async (dispatch: Dispatch) =>{
+export const setUserTC = (user: UserLogging,t:any) => async (dispatch: Dispatch) =>{
     try{
         const res:any = await authApi.login(user)
+        localStorage.setItem('token',Date.now().toString())
         dispatch(setUser(res))
-        dispatch(setLogged(true))
-    }
+        dispatch(setLogged(true))    }
     catch(e){
-        dispatch(showToaster(true,'Неправильный пароль','error'))
-        setTimeout(()=>{
-            dispatch(showToaster(false,'','success'))
-        },1500)
+        toast.show({
+            content:'test',
+            title:t('LOGIN_FORM.ERROR.INVALID_PASSWORD'),
+            type:'error',
+            duration:3000
+        })
 
     }
 

@@ -23,7 +23,7 @@ const instance = axios.create({
 export const authApi = {
     login: (user: UserLogging) => new Promise((resolve, reject) => {
         if (user.email === 'tataev.shokan@gmail.com' && user.password === 'aaa123') {
-            resolve({email:'tataev.shokan@gmail.com', password:'123',post:'cashier'})
+            resolve({email:'tataev.shokan@gmail.com', password:'123',post:'cashier',restaurantId:1})
         } else {
             reject('error')
         }
