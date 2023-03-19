@@ -2,7 +2,7 @@ import {Dispatch} from "redux";
 import {ordersAPI} from "../../api/api";
 import {NavigateFunction} from "react-router-dom";
 import {AppStateType} from "../store";
-
+import {setLogged} from "./authReducer";
 
 
 type ActionsType = ReturnType<typeof getOrders> | ReturnType<typeof createOrder> | ReturnType<typeof onLoader>
@@ -65,15 +65,20 @@ export const onLoader = (on: boolean) => ({
 //THUNK CREATORS
 
 export const getOrdersTC = (id: number) => async (dispatch: Dispatch) => {
-    const orders = await ordersAPI.getAllOrders(id)
-    dispatch(getOrders(orders))
+    const token = localStorage.getItem('token');
+    if (token) {
+        const orders = await ordersAPI.getAllOrders(id, token)
+        dispatch(getOrders(orders))
+    } else {
+        dispatch(setLogged(false))
+    }
 }
 
 export const createOrderTC = (navigate: NavigateFunction) => async (dispatch: Dispatch, getState: () => AppStateType) => {
-    dispatch(onLoader(true))
-    const restaurantId = getState().auth.user.restaurantId
-    const order = await ordersAPI.createOrder(restaurantId)
-    dispatch(createOrder(order))
-    navigate(`/home/${restaurantId}/orders/${order.id}`)
-    dispatch(onLoader(false))
+    // dispatch(onLoader(true))
+    // const restaurantId = getState().auth.user.restaurantId
+    // const order = await ordersAPI.createOrder(restaurantId)
+    // dispatch(createOrder(order))
+    // navigate(`/home/${restaurantId}/orders/${order.id}`)
+    // dispatch(onLoader(false))
 }

@@ -1,6 +1,12 @@
-import {UserLogging} from "../store/reducers/authReducer";
+import {UserLogging, UserType} from "../store/reducers/authReducer";
 import axios from 'axios'
 import {OrdersType} from "../store/reducers/orders-reducer";
+
+//TYPES
+
+export type LoginResponseType = {
+    access_token: string
+}
 
 type ResponseOrdersType = {
     id: number
@@ -10,8 +16,14 @@ type ResponseOrdersType = {
     orders: OrdersType[]
 }
 
+type ResponseRestaurantsType = {
+    restaurants: ResponseOrdersType[]
+}
+
+const baseURL = 'https://queue-back-development.up.railway.app/'
+const localURL = 'http://localhost:8080/'
 const instance = axios.create({
-    baseURL: 'https://queue.up.railway.app/api/',
+    baseURL: baseURL,
     headers: {
         withCredentials: true,
         "Access-Control-Allow-Origin": "*",
@@ -21,17 +33,26 @@ const instance = axios.create({
 
 
 export const authApi = {
-    login: (user: UserLogging) => new Promise((resolve, reject) => {
-        if (user.email === '111@mail.ru' && user.password === '1111111') {
-            resolve({email:'111@mail.ru', password:'1111111',post:'cashier', restaurantId: 45})
-        } else {
-            reject('error')
-        }
-    }).then((res)=>res)
+    login: (user: UserLogging) => instance.post<LoginResponseType>(`auth/login`, user).then(res => res.data),
+    token: (token: string) => {
+        instance.defaults.headers.common['Authorization'] = `Bearer ${token}`
+        return instance.post<UserType>(`auth/token`).then(res => res.data)
+    },
+}
+
+export const restaurantsAPI = {
+    getAllRestaurants: (token: string) => {
+        instance.defaults.headers.common['Authorization'] = `Bearer ${token}`
+        return  instance.get<ResponseRestaurantsType>(`/restaurants`).then(res => res.data)
+    },
 }
 
 export const ordersAPI = {
-    getAllOrders: (id: number) => instance.get<ResponseOrdersType>(`restaurants/${id}/orders`).then(res => res.data.orders),
+    getAllOrders: (id: number, token: string) => {
+        instance.defaults.headers.common['Authorization'] = `Bearer ${token}`
+        return  instance.get<ResponseOrdersType>(`restaurants/${id}/orders`)
+            .then(res => res.data.orders)
+    },
     getOrder: (restaurantId: number, orderId: number) => instance.get(`restaurants/${restaurantId}/orders/${orderId}`).then(res => res.data),
     createOrder: (restaurantId: number) => instance.post(`orders`, {restaurant_id: restaurantId}).then(res => res.data),
 }

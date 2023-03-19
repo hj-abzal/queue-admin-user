@@ -1,18 +1,23 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Table} from "../components/Table";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../store/store";
-import {OrdersInitStateType} from "../store/reducers/orders-reducer";
+import {getOrdersTC, OrdersInitStateType} from "../store/reducers/orders-reducer";
 import {useTranslation} from "react-i18next";
 import {AddItemForm} from "../components/AddItemForm";
+import {useParams} from "react-router-dom";
 
 export const OrdersPage: React.FC = () => {
-
+    const dispatch = useDispatch<any>();
+    const {restaurantId} = useParams()
     const {t} = useTranslation();
     const orders = useSelector<AppStateType, OrdersInitStateType>(state => state.orders)
 
     const readyOrders = orders.orders.filter(order => order.is_ready)
     const notReady = orders.orders.filter(order => !order.is_ready)
+    useEffect(() => {
+        dispatch(getOrdersTC(Number(restaurantId)))
+    }, [])
 
     return (
         <div>

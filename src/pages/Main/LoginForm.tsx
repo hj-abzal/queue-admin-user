@@ -4,7 +4,7 @@ import {useFormik} from "formik";
 import {useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
-import {setUserTC, UserType} from "../../store/reducers/authReducer";
+import {setUserTC} from "../../store/reducers/authReducer";
 import {AppStateType} from "../../store/store";
 
 const validate = ({password, email}: initStateType) => {
@@ -33,11 +33,10 @@ export const LoginForm: React.FC = () => {
     const dispatch = useDispatch<any>()
     const navigate = useNavigate()
     const isLogged = useSelector<AppStateType, boolean>(state => state.auth.isLogged)
-    const user = useSelector<AppStateType, UserType>(state => state.auth.user)
     const {values, handleSubmit, handleChange, touched, errors, setFieldValue, setTouched} = useFormik({
         initialValues: {
-            password: '',
-            email: '',
+            password: 'querty',
+            email: '171-421@mail.ru',
         },
         validate,
         onSubmit: values => {
@@ -65,9 +64,10 @@ export const LoginForm: React.FC = () => {
 
     const emailRegex = (v: string) => v.replace(/[^A-Z-0-9_.-@]/gi, "").replace(/;/i, "");
     const latinRegex = (v: string) => v.replace(/[^A-Z-0-9_]/gi, "");
+
     useEffect(() => {
         if (isLogged) {
-            navigate(`/home/${user.restaurantId}`)
+            navigate(`/home/restaurants`)
         }
     }, [isLogged])
     return (
