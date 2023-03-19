@@ -1,12 +1,11 @@
-import React from 'react';
-import {LoginForm} from "./LoginForm";
+import React, {ReactNode} from 'react';
 
 
-export const LoginPage = () => {
+export const SingleCardPage = ({children}: {children: ReactNode }) => {
     return (
         <div className="flex flex-col justify-center items-center h-screen gap-y-20 relative">
             <div className="card">
-                <LoginForm/>
+                {children}
             </div>
         </div>
     );

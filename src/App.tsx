@@ -2,13 +2,15 @@ import React from 'react';
 import {Navigate, Route, Routes} from "react-router-dom";
 import './i18n'
 import {Home} from "./pages/Home";
-import {LoginPage} from "./pages/Main/LoginPage";
+import {SingleCardPage} from "./components/SingleCardPage";
 import {OrdersPage} from "./pages/OrdersPage"
 import {useSelector} from "react-redux";
 import {OrderEditing} from "./components/OrderEditing";
 import {Loader} from "./components/Loader";
 import {AppStateType} from "./store/store";
 import {Restaurants} from "./pages/Restaurants";
+import {LoginForm} from "./pages/Main/LoginForm";
+import {ProfileInfo} from "./pages/ProfileInfo";
 
 export const App: React.FC = () => {
     const loader = useSelector<AppStateType, boolean>(state => state.orders.loader);
@@ -17,12 +19,12 @@ export const App: React.FC = () => {
         <div className="w-screen h-screen">
             {loader && <Loader/>}
             <Routes>
-                <Route path={'/login'} element={<LoginPage/>}/>
+                <Route path={'/login'} element={<SingleCardPage><LoginForm/></SingleCardPage>}/>
                 <Route path={'/home'} element={<Home/>}>
                     <Route path={'/home/restaurants'} element={<Restaurants/>}/>
                     <Route path={'/home/restaurants/:restaurantId'} element={<OrdersPage/>}/>
                     <Route path={'/home/restaurants/:restaurantId/orders/:orderId'} element={<OrderEditing/>}/>
-                    <Route path={'/home/profile'} element={<div>coming soon</div>}/>
+                    <Route path={'/home/profile'} element={<SingleCardPage><ProfileInfo/></SingleCardPage>}/>
                 </Route>
                 <Route path={'/'} element={<Navigate to={'/login'}/>}/>
             </Routes>
