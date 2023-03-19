@@ -77,7 +77,6 @@ export const setUserTC = (user: UserLogging, t: any) => async (dispatch: Dispatc
         const res = await authApi.login(user)
         dispatch(setLogged(true))
         localStorage.setItem('token', res.access_token)
-        console.log(res)
     } catch (e) {
         toast.show({
             content: 'test',

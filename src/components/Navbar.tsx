@@ -15,7 +15,7 @@ export const Navbar: React.FC = () => {
 
     const navbarIcons = [
         {
-            name: 'orders',
+            name: 'restaurants',
             animation: orders,
             className: 'w-[3rem] h-[3rem]',
             ref: useRef<any>(),

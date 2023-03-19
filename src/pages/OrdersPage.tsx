@@ -5,25 +5,41 @@ import {AppStateType} from "../store/store";
 import {getOrdersTC, OrdersInitStateType} from "../store/reducers/orders-reducer";
 import {useTranslation} from "react-i18next";
 import {AddItemForm} from "../components/AddItemForm";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 export const OrdersPage: React.FC = () => {
-    const dispatch = useDispatch<any>();
     const {restaurantId} = useParams()
     const {t} = useTranslation();
+    const dispatch = useDispatch<any>();
+    const navigate = useNavigate();
     const orders = useSelector<AppStateType, OrdersInitStateType>(state => state.orders)
 
     const readyOrders = orders.orders.filter(order => order.is_ready)
     const notReady = orders.orders.filter(order => !order.is_ready)
+
     useEffect(() => {
         dispatch(getOrdersTC(Number(restaurantId)))
     }, [])
 
+    const onClickOrder = (id: number) => {
+        navigate(`/home/restaurants/${restaurantId}/orders/${id}`)
+    }
+
     return (
         <div>
             <AddItemForm/>
-            <Table orders={notReady} variant={'primary'} title={t('ORDERS.NOT_READY')}/>
-            <Table orders={readyOrders} variant={'secondary'} title={t('ORDERS.DONE')}/>
+            <Table
+                orders={notReady}
+                variant={'primary'}
+                title={t('ORDERS.NOT_READY')}
+                onItemClicked={onClickOrder}
+            />
+            <Table
+                orders={readyOrders}
+                variant={'secondary'}
+                title={t('ORDERS.DONE')}
+                onItemClicked={onClickOrder}
+            />
         </div>
     );
 };

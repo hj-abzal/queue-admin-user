@@ -1,15 +1,15 @@
 import React from 'react';
 import {OrdersType} from "../store/reducers/orders-reducer";
-import {useNavigate} from "react-router-dom";
 
 
 type TableProps = {
-    orders: OrdersType[],
     title: string,
     variant: 'primary' | 'secondary'
+    orders: OrdersType[],
+    onItemClicked: (id: number) => void
 }
 
-export const Table: React.FC<TableProps> = ({orders, title, variant}) => {
+export const Table: React.FC<TableProps> = ({orders, title, variant, onItemClicked}) => {
 
     const classes = {
         primary: {
@@ -26,12 +26,6 @@ export const Table: React.FC<TableProps> = ({orders, title, variant}) => {
         }
     }
 
-    const navigate = useNavigate()
-
-    const orderInfo = (orderId: number) => {
-       navigate(`/home/${45}/orders/${orderId}`)
-    }
-
     return (
         <div className={classes[variant].table}>
             <div className={'flex flex-col'}>
@@ -43,11 +37,11 @@ export const Table: React.FC<TableProps> = ({orders, title, variant}) => {
                         {orders.map((t) => {
                             if (t.is_ready) return <button key={t.id}
                                                            className={classes[variant].order}
-                                                           onClick={() => orderInfo(t.id)}>{t.key}
+                                                           onClick={() => onItemClicked(t.id)}>{t.key}
                             </button>
                             if (!t.is_ready) return <button key={t.id}
                                                             className={classes[variant].order}
-                                                            onClick={() => orderInfo(t.id)}>{t.key}
+                                                            onClick={() => onItemClicked(t.id)}>{t.key}
                             </button>
                         })}</div>
                 </div>

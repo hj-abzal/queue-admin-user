@@ -20,8 +20,8 @@ export const App: React.FC = () => {
                 <Route path={'/login'} element={<LoginPage/>}/>
                 <Route path={'/home'} element={<Home/>}>
                     <Route path={'/home/restaurants'} element={<Restaurants/>}/>
-                    <Route path={'/home/:restaurantId'} element={<OrdersPage/>}/>
-                    <Route path={'/home/:restaurantId/orders/:orderId'} element={<OrderEditing/>}/>
+                    <Route path={'/home/restaurants/:restaurantId'} element={<OrdersPage/>}/>
+                    <Route path={'/home/restaurants/:restaurantId/orders/:orderId'} element={<OrderEditing/>}/>
                     <Route path={'/home/profile'} element={<div>coming soon</div>}/>
                 </Route>
                 <Route path={'/'} element={<Navigate to={'/login'}/>}/>

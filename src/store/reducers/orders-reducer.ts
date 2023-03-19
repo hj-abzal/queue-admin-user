@@ -65,13 +65,21 @@ export const onLoader = (on: boolean) => ({
 //THUNK CREATORS
 
 export const getOrdersTC = (id: number) => async (dispatch: Dispatch) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-        const orders = await ordersAPI.getAllOrders(id, token)
-        dispatch(getOrders(orders))
-    } else {
-        dispatch(setLogged(false))
+    try {
+        dispatch(onLoader(true))
+        const token = localStorage.getItem('token');
+        if (token) {
+            const orders = await ordersAPI.getAllOrders(id, token)
+            dispatch(getOrders(orders))
+        } else {
+            dispatch(setLogged(false))
+        }
+    } catch (e) {
+
+    } finally {
+        dispatch(onLoader(false))
     }
+
 }
 
 export const createOrderTC = (navigate: NavigateFunction) => async (dispatch: Dispatch, getState: () => AppStateType) => {

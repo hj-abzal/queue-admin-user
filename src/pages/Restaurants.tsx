@@ -11,9 +11,8 @@ export const Restaurants = () => {
     const user = useSelector<AppStateType, UserType>(state => state.auth.user)
 
     const onClickRestaurant = (id: number) => {
-        navigate(`/home/${id}`)
+        navigate(`/home/restaurants/${id}`)
     }
-
 
     useEffect(() => {
         if (user?.id) {
