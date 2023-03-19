@@ -33,7 +33,7 @@ export const LoginForm: React.FC = () => {
     const dispatch = useDispatch<any>()
     const navigate = useNavigate()
     const isLogged = useSelector<AppStateType, boolean>(state => state.auth.isLogged)
-    const {values, handleSubmit, handleChange, touched, errors, setFieldValue, setTouched} = useFormik({
+    const {values, handleSubmit, handleChange, touched, errors, setTouched} = useFormik({
         initialValues: {
             password: 'qwerty',
             email: 'abzal008@mail.ru',
@@ -72,6 +72,7 @@ export const LoginForm: React.FC = () => {
     }, [isLogged])
     return (
         <form className="card-section" onSubmit={handleSubmit}>
+            <h2 className="text-2xl font-bold mb-4 text-center">Queue Admin</h2>
             <div>
                 <Input
                     label={t("LOGIN_FORM.EMAIL")}
@@ -84,7 +85,7 @@ export const LoginForm: React.FC = () => {
 
                 <Input
                     label={t("LOGIN_FORM.PASSWORD")}
-                    placeholder={'********************'}
+                    placeholder={'********'}
                     name="password"
                     type={'password'}
                     onChange={onPasswordChange}
