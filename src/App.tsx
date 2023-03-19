@@ -10,7 +10,7 @@ import {Loader} from "./components/Loader";
 import {AppStateType} from "./store/store";
 import {Restaurants} from "./pages/Restaurants";
 import {LoginForm} from "./pages/Main/LoginForm";
-import {ProfileInfo} from "./pages/ProfileInfo";
+import {ProfilePage} from "./pages/ProfilePage";
 
 export const App: React.FC = () => {
     const loader = useSelector<AppStateType, boolean>(state => state.orders.loader);
@@ -24,7 +24,7 @@ export const App: React.FC = () => {
                     <Route path={'/home/restaurants'} element={<Restaurants/>}/>
                     <Route path={'/home/restaurants/:restaurantId'} element={<OrdersPage/>}/>
                     <Route path={'/home/restaurants/:restaurantId/orders/:orderId'} element={<OrderEditing/>}/>
-                    <Route path={'/home/profile'} element={<SingleCardPage><ProfileInfo/></SingleCardPage>}/>
+                    <Route path={'/home/profile'} element={<ProfilePage/>}/>
                 </Route>
                 <Route path={'/'} element={<Navigate to={'/login'}/>}/>
             </Routes>
