@@ -35,8 +35,8 @@ export const LoginForm: React.FC = () => {
     const isLogged = useSelector<AppStateType, boolean>(state => state.auth.isLogged)
     const {values, handleSubmit, handleChange, touched, errors, setFieldValue, setTouched} = useFormik({
         initialValues: {
-            password: 'querty',
-            email: '171-421@mail.ru',
+            password: 'qwerty',
+            email: 'abzal008@mail.ru',
         },
         validate,
         onSubmit: values => {

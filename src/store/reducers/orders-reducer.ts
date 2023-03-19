@@ -1,7 +1,5 @@
 import {Dispatch} from "redux";
 import {ordersAPI} from "../../api/api";
-import {NavigateFunction} from "react-router-dom";
-import {AppStateType} from "../store";
 import {setLogged} from "./authReducer";
 
 
@@ -13,8 +11,8 @@ export type OrdersInitStateType = {
 export type OrdersType = {
     id: number
     is_ready: boolean
-    key: string
-    restaurant_id: number
+    key: string,
+    description: string
 }
 export const OrdersInitState = {
     orders: [],
@@ -82,8 +80,16 @@ export const getOrdersTC = (id: number) => async (dispatch: Dispatch) => {
 
 }
 
-export const createOrderTC = (navigate: NavigateFunction) => async (dispatch: Dispatch, getState: () => AppStateType) => {
-    // dispatch(onLoader(true))
+export const createOrderTC = (restaurantId: number, comment: string, ) => async (dispatch: Dispatch) => {
+    try {
+        dispatch(onLoader(true))
+        const order = await ordersAPI.createOrder(restaurantId, comment)
+        dispatch(createOrder(order))
+    } catch (e) {
+
+    } finally {
+        dispatch(onLoader(false))
+    }
     // const restaurantId = getState().auth.user.restaurantId
     // const order = await ordersAPI.createOrder(restaurantId)
     // dispatch(createOrder(order))

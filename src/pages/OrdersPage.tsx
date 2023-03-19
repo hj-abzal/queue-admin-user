@@ -27,7 +27,7 @@ export const OrdersPage: React.FC = () => {
 
     return (
         <div className="h-full flex flex-col">
-            <AddItemForm/>
+            <AddItemForm restaurantId={Number(restaurantId)}/>
             <div className="flex-grow flex flex-col justify-around">
                 <Table
                     orders={notReady}

@@ -5,6 +5,7 @@ type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElem
 type InputPropsType = DefaultInputPropsType & {
     label: string
     onChangeText?: (value: string) => void
+    onPressEnter?: () => void
     error?: string | null
     helperText?: string | null
 }
@@ -15,10 +16,13 @@ export const Input: React.FC<InputPropsType> = React.memo((
             type = 'text',
             placeholder = '',
             children,
-            onChange, onChangeText,
+            onChange,
+            onChangeText,
+            onPressEnter,
             error,
             className,
             helperText,
+            onKeyPress,
             ...restProps
         }
     ) => {
@@ -28,6 +32,16 @@ export const Input: React.FC<InputPropsType> = React.memo((
             && onChange(e)
 
             onChangeText && onChangeText(e.currentTarget.value)
+        }
+
+        const onKeyPressCallback = (e: React.KeyboardEvent<HTMLInputElement>) => {
+            if (e.key === 'Enter') {
+                e.currentTarget.blur()
+                onPressEnter && onPressEnter()
+
+                onKeyPress && onKeyPress(e)
+            }
+
         }
 
         const inputError = error ? 'border-error focus:border-error' : 'border-secondary focus:border-accent-light';
@@ -40,6 +54,7 @@ export const Input: React.FC<InputPropsType> = React.memo((
                     ref={ref}
                     id="floating_helper"
                     placeholder=" "
+                    onKeyPress={onKeyPressCallback}
                     onFocus={(e) => e.target.placeholder = placeholder}
                     onBlur={(e) => e.target.placeholder = " "}
                     onChange={onChangeCallback}

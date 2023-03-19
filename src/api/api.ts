@@ -43,18 +43,24 @@ export const authApi = {
 export const restaurantsAPI = {
     getAllRestaurants: (token: string) => {
         instance.defaults.headers.common['Authorization'] = `Bearer ${token}`
-        return  instance.get<ResponseRestaurantsType>(`/restaurants`).then(res => res.data)
+        return instance.get<ResponseRestaurantsType>(`/restaurants`).then(res => res.data)
     },
 }
 
 export const ordersAPI = {
     getAllOrders: (id: number, token: string) => {
         instance.defaults.headers.common['Authorization'] = `Bearer ${token}`
-        return  instance.get<ResponseOrdersType>(`restaurants/${id}/orders`)
+        return instance.get<ResponseOrdersType>(`restaurants/${id}/orders`)
             .then(res => res.data.orders)
     },
     getOrder: (restaurantId: number, orderId: number) => instance.get(`restaurants/${restaurantId}/orders/${orderId}`).then(res => res.data),
-    createOrder: (restaurantId: number) => instance.post(`orders`, {restaurant_id: restaurantId}).then(res => res.data),
+    createOrder: (restaurant_id: number, description: string = '') => {
+        return instance.post(`restaurants/${restaurant_id}/orders/`, {
+            restaurant_id,
+            description
+        })
+            .then(res => res.data)
+    },
 }
 
 

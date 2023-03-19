@@ -35,14 +35,10 @@ export const Table: React.FC<TableProps> = ({orders, title, variant, onItemClick
                     <div
                         className={classes[variant].border}>
                         {orders.map((t) => {
-                            if (t.is_ready) return <button key={t.id}
-                                                           className={classes[variant].order}
-                                                           onClick={() => onItemClicked(t.id)}>{t.key}
-                            </button>
-                            if (!t.is_ready) return <button key={t.id}
-                                                            className={classes[variant].order}
-                                                            onClick={() => onItemClicked(t.id)}>{t.key}
-                            </button>
+                           return <button key={t.id}
+                                          className={classes[variant].order}
+                                          onClick={() => onItemClicked(t.id)}>{t.key}
+                           </button>
                         })}</div>
                 </div>
             </div>

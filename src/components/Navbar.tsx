@@ -52,7 +52,7 @@ export const Navbar: React.FC = () => {
             {
                 navbarIcons.map((item) => {
                     return (
-                        <div className={"flex flex-col items-center relative " + item.wrapperClassName}>
+                        <div key={item.url} className={"flex flex-col items-center relative " + item.wrapperClassName}>
                             <Lottie
                                 key={item.name}
                                 className={applyActiveStyle(item.url, item.animationClassName)}
