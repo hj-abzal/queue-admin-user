@@ -10,7 +10,7 @@ body {
 
 @layer components {
     .btn {
-        @apply h-14 rounded-lg bg-accent text-white disabled:opacity-40;
+        @apply h-14 rounded-lg bg-accent text-white disabled:opacity-40 min-w-[50px] px-3;
     }
 
     .card {

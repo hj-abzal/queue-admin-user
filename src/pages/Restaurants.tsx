@@ -22,8 +22,10 @@ export const Restaurants = () => {
     }, [user]);
 
     return (
-        <div className={'flex items-center flex-col h-full'}>
-            <h1>All you restaurants</h1>
+        <div className="h-full flex flex-col">
+            <div>
+                <h1 className={'text-[#1C5279] text-[22px] font-bold mt-6 text-center'}>Restaurants</h1>
+            </div>
             <div className={"w-full bg-white flex flex-col mt-6 p-6 rounded-3xl"}>
                 {restaurants.map(r => {
                     return (

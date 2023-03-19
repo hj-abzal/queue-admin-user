@@ -14,7 +14,7 @@ export const App: React.FC = () => {
     const loader = useSelector<AppStateType, boolean>(state => state.orders.loader);
 
     return (
-        <div>
+        <div className="w-screen h-screen">
             {loader && <Loader/>}
             <Routes>
                 <Route path={'/login'} element={<LoginPage/>}/>

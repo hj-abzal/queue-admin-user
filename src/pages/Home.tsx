@@ -18,8 +18,10 @@ export const Home: React.FC = () => {
         }
     }, []);
     return (
-        <div className={'flex flex-col h-full w-full'}>
-            <Outlet/>
+        <div className='h-full flex flex-col overflow-hidden'>
+            <div className="flex-grow">
+                <Outlet/>
+            </div>
             <Navbar/>
         </div>
     );

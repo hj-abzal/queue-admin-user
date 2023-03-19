@@ -14,10 +14,10 @@ export const AddItemForm: React.FC = () => {
     }
 
     return (
-        <div className={'flex justify-center mt-5 mr-8 ml-8'}>
-            <div className={'flex gap-4'}>
-                <input className={'p-1 rounded-xl'}/>
-                <button className={'bg-accent p-1 text-white font-bold rounded-[50%] w-[30px] h-[30px] flex items-center justify-center'} onClick={addOrder}>+</button>
+        <div className="h-[60px] w-full flex justify-center ">
+            <div className="min-w-[350px] flex justify-between items-center mt-4">
+                <input className="h-14 w-[255px] p-1 rounded focus:border-none"/>
+                <button className="btn" onClick={addOrder}>Создать</button>
             </div>
         </div>
     );
