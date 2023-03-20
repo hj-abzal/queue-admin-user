@@ -1,11 +1,11 @@
 import React from 'react';
-import {OrdersType} from "../store/reducers/orders-reducer";
+import {OrderType} from "../store/reducers/orders-reducer";
 
 
 type TableProps = {
     title: string,
     variant: 'primary' | 'secondary'
-    orders: OrdersType[],
+    orders: OrderType[],
     onItemClicked: (id: number) => void
 }
 

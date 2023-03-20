@@ -1,6 +1,6 @@
 import {UserLogging, UserType} from "../store/reducers/authReducer";
 import axios from 'axios'
-import {OrdersType} from "../store/reducers/orders-reducer";
+import {OrderType} from "../store/reducers/orders-reducer";
 
 //TYPES
 
@@ -13,7 +13,11 @@ type ResponseOrdersType = {
     img: string
     title: string
     url: string
-    orders: OrdersType[]
+    orders: OrderType[]
+}
+
+type ResponseOrderType = {
+    order: OrderType
 }
 
 type ResponseRestaurantsType = {
@@ -53,7 +57,10 @@ export const ordersAPI = {
         return instance.get<ResponseOrdersType>(`restaurants/${id}/orders`)
             .then(res => res.data.orders)
     },
-    getOrder: (restaurantId: number, orderId: number) => instance.get(`restaurants/${restaurantId}/orders/${orderId}`).then(res => res.data),
+    getOrder: (restaurantId: string, orderId: string) => {
+        return instance.get<ResponseOrderType>(`restaurants/${restaurantId}/orders/${orderId}`)
+            .then(res => res.data)
+    },
     createOrder: (restaurant_id: number, description: string = '') => {
         return instance.post(`restaurants/${restaurant_id}/orders/`, {
             restaurant_id,

@@ -3,12 +3,18 @@ import {ordersAPI} from "../../api/api";
 import {setLogged} from "./authReducer";
 
 
-type ActionsType = ReturnType<typeof getOrders> | ReturnType<typeof createOrder> | ReturnType<typeof onLoader>
+type ActionsType =
+    | ReturnType<typeof getOrders>
+    | ReturnType<typeof createOrder>
+    | ReturnType<typeof onLoader>
+    | ReturnType<typeof setSelectedOrder>
+
 export type OrdersInitStateType = {
-    orders: OrdersType[],
+    orders: OrderType[],
+    selectedOrder: OrderType | null,
     loader: boolean
 }
-export type OrdersType = {
+export type OrderType = {
     id: number
     is_ready: boolean
     key: string,
@@ -16,11 +22,11 @@ export type OrdersType = {
 }
 export const OrdersInitState = {
     orders: [],
+    selectedOrder: null,
     loader: false
 }
 
 //REDUCER LOGIC
-
 export const ordersReducer = (state: OrdersInitStateType = OrdersInitState, action: ActionsType): OrdersInitStateType => {
     switch (action.type) {
         case "GET_ORDERS": {
@@ -41,6 +47,12 @@ export const ordersReducer = (state: OrdersInitStateType = OrdersInitState, acti
                 loader: action.on
             }
         }
+        case 'SET_SELECTED_ORDER': {
+            return {
+                ...state,
+                selectedOrder: action.order
+            }
+        }
         default:
             return state
     }
@@ -48,17 +60,21 @@ export const ordersReducer = (state: OrdersInitStateType = OrdersInitState, acti
 
 //ACTION CREATORS
 
-export const getOrders = (orders: OrdersType[]) => ({
+export const getOrders = (orders: OrderType[]) => ({
     type: "GET_ORDERS" as const, orders
 })
 
-export const createOrder = (order: OrdersType) => ({
+export const createOrder = (order: OrderType) => ({
     type: 'CREATE_ORDER' as const, order
 })
 
 export const onLoader = (on: boolean) => ({
     type: 'ON_LOADER' as const, on
 })
+
+export const setSelectedOrder = (order: OrderType) => ({
+    type: 'SET_SELECTED_ORDER' as const, order
+});
 
 //THUNK CREATORS
 
@@ -90,9 +106,16 @@ export const createOrderTC = (restaurantId: number, comment: string, ) => async 
     } finally {
         dispatch(onLoader(false))
     }
-    // const restaurantId = getState().auth.user.restaurantId
-    // const order = await ordersAPI.createOrder(restaurantId)
-    // dispatch(createOrder(order))
-    // navigate(`/home/${restaurantId}/orders/${order.id}`)
-    // dispatch(onLoader(false))
+}
+
+export const getSelectedOrderTC = (restaurantId: string, orderId: string) => async (dispatch: Dispatch) => {
+    try {
+        dispatch(onLoader(true))
+        const res = await ordersAPI.getOrder(restaurantId, orderId)
+        dispatch(setSelectedOrder(res.order))
+    } catch (e) {
+
+    } finally {
+        dispatch(onLoader(false))
+    }
 }
