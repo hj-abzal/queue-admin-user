@@ -28,5 +28,15 @@
     "CREATE_PAGE": "Создание заказа",
     "WAITING": "В Ожидании",
     "CREATE_ORDER": "Создать заказ"
+  },
+  "PROFILE": {
+    "USER_NAME": "Имя пользователя",
+    "USER_ROLE": "Роль пользователя",
+    "PROFILE_STATUS": "Статус профиля",
+    "LANGUAGE": "Язык",
+    "USER_ROLE_MANAGER": "Менеджер",
+    "USER_ROLE_CASHIER": "Кассир",
+    "PROFILE_STATUS_VERIFIED": "Подтвержден",
+    "PROFILE_STATUS_UNVERIFIED": "Неподтвержден"
   }
 }

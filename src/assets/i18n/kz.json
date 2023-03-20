@@ -28,5 +28,15 @@
     "CREATE_PAGE": "Тапсырыс жасау",
     "WAITING": "Күтуде",
     "CREATE_ORDER": "Тапсырыс жасау"
+  },
+  "PROFILE": {
+    "USER_NAME": "Пайдаланушынын аты",
+    "USER_ROLE": "Пайдаланушынын рөлі",
+    "PROFILE_STATUS": "Профиль статусы",
+    "LANGUAGE": "Тіл",
+    "USER_ROLE_MANAGER": "Менеджер",
+    "USER_ROLE_CASHIER": "Кассир",
+    "PROFILE_STATUS_VERIFIED": "Расталған",
+    "PROFILE_STATUS_UNVERIFIED": "Расталмаған"
   }
 }

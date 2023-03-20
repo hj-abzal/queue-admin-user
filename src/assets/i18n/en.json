@@ -29,5 +29,15 @@
     "CREATE_PAGE": "Creating an order",
     "WAITING": "Waiting",
     "CREATE_ORDER": "Create an order"
+  },
+  "PROFILE": {
+    "USER_NAME": "User name",
+    "USER_ROLE": "User role",
+    "PROFILE_STATUS": "Profile status",
+    "LANGUAGE": "Language",
+    "USER_ROLE_MANAGER": "Manager",
+    "USER_ROLE_CASHIER": "Cashier",
+    "PROFILE_STATUS_VERIFIED": "Verified",
+    "PROFILE_STATUS_UNVERIFIED": "Unverified"
   }
 }
