@@ -13,25 +13,25 @@ export const ProfileInfo = () => {
             <table className={'h-[250px]'}>
                 <tbody>
                 <tr>
-                    <th className={'mr-[15px]'}>{t('Имя пользователя:')}</th>
+                    <th className={'pr-[20px]'}>{t('Имя пользователя:')}</th>
                     <td>{user.username}</td>
                 </tr>
                 </tbody>
                 <tbody>
                 <tr>
-                    <th>{'Почта:'}</th>
+                    <th className={'pr-[20px]'}>{'Почта:'}</th>
                     <td>{user.email}</td>
                 </tr>
                 </tbody>
                 <tbody>
                 <tr>
-                    <th>{'Роль:'}</th>
+                    <th className={'pr-[20px]'}>{'Роль:'}</th>
                     <td>{"Менеджер"}</td>
                 </tr>
                 </tbody>
                 <tbody>
                 <tr>
-                    <th>{'Статус:'}</th>
+                    <th className={'pr-[20px]'}>{'Статус:'}</th>
                     <td>{user.status}</td>
                 </tr>
                 </tbody>
