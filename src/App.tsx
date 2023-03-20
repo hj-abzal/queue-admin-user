@@ -14,7 +14,6 @@ import {ProfilePage} from "./pages/ProfilePage";
 
 export const App: React.FC = () => {
     const loader = useSelector<AppStateType, boolean>(state => state.auth.isLoading);
-
     return (
         <div className="w-screen h-screen">
             {loader && <Loader/>}
