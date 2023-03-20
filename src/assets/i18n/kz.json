@@ -14,7 +14,9 @@
     "CREATE": "Жасау",
     "DONE": "Дайын",
     "NOT_READY": "Дайындалуда",
-    "BACK": "Артқа"
+    "BACK": "Артқа",
+    "COMMENT": "Комментарий",
+    "NOT_NECESSARY": "міндетті емес"
   },
   "ORDERS_INFO": {
     "CHANGE": "Тапсырысты өңдеу",
@@ -38,5 +40,18 @@
     "USER_ROLE_CASHIER": "Кассир",
     "PROFILE_STATUS_VERIFIED": "Расталған",
     "PROFILE_STATUS_UNVERIFIED": "Расталмаған"
+  },
+  "NAVBAR": {
+    "PROFILE": "Профиль",
+    "RESTAURANTS_NAME": "Мейрамханалар"
+  },
+  "TOASTER_AUTH": {
+    "SUCCESS": "Сессия қайта басталды!",
+    "ERROR": "Логин немесе пароль дұрыс емес!",
+    "WARNING": "Жалғастыру үшін жүйеге кіру керек!"
+  },
+  "TOASTER_ORDERS": {
+    "SUCCESS": "Жаңа тапсырыс жасалды!",
+    "ERROR": "Тапсырыс жасау кезінде қате пайда болды!"
   }
 }

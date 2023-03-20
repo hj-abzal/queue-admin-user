@@ -14,7 +14,9 @@
     "CREATE": "Создать",
     "DONE": "Готово",
     "NOT_READY": "Готовится",
-    "BACK": "Назад"
+    "BACK": "Назад",
+    "COMMENT": "Комментарий",
+    "NOT_NECESSARY": "не обязательно"
   },
   "ORDERS_INFO": {
     "CHANGE": "Редактирование заказа",
@@ -38,5 +40,18 @@
     "USER_ROLE_CASHIER": "Кассир",
     "PROFILE_STATUS_VERIFIED": "Подтвержден",
     "PROFILE_STATUS_UNVERIFIED": "Неподтвержден"
+  },
+  "NAVBAR": {
+    "PROFILE": "Профиль",
+    "RESTAURANTS_NAME": "Рестораны"
+  },
+  "TOASTER_AUTH": {
+    "SUCCESS": "Сессия успешно возобновлена!",
+    "ERROR": "Неверный логин или пароль!",
+    "WARNING": "Нужно авторизоваться!"
+  },
+  "TOASTER_ORDERS": {
+    "SUCCESS": "Новый заказ создан!",
+    "ERROR": "Ошибка при создания заказа!"
   }
 }

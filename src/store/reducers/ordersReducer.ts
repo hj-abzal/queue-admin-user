@@ -2,6 +2,7 @@ import {Dispatch} from "redux";
 import {ordersAPI} from "../../api/api";
 import {setIsLoading, setLogged} from "./authReducer";
 import {showErrorToast, showSuccessToast} from "../../components/Toast/ToastManager";
+import {useTranslation} from "react-i18next";
 
 
 type ActionsType =
@@ -65,7 +66,6 @@ export const setSelectedOrder = (order: OrderType) => ({
 });
 
 //THUNK CREATORS
-
 export const getOrdersTC = (id: number) => async (dispatch: Dispatch) => {
     try {
         dispatch(setIsLoading(true))
@@ -84,14 +84,14 @@ export const getOrdersTC = (id: number) => async (dispatch: Dispatch) => {
 
 }
 
-export const createOrderTC = (restaurantId: number, comment: string, ) => async (dispatch: Dispatch) => {
+export const createOrderTC = (restaurantId: number, comment: string, t: any) => async (dispatch: Dispatch) => {
     try {
         dispatch(setIsLoading(true))
         const order = await ordersAPI.createOrder(restaurantId, comment)
         dispatch(createOrder(order))
-        showSuccessToast("Новый заказ создан");
+        showSuccessToast(t("TOASTER_ORDERS.SUCCESS"));
     } catch (e) {
-        showErrorToast("Ошибка создания заказа");
+        showErrorToast(t("TOASTER_ORDERS.ERROR"));
     } finally {
         dispatch(setIsLoading(false))
     }

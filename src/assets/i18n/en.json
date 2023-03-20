@@ -15,7 +15,9 @@
     "CREATE": "Create",
     "DONE": "Done",
     "NOT_READY": "Getting ready",
-    "BACK": "Back"
+    "BACK": "Back",
+    "COMMENT": "Comment",
+    "NOT_NECESSARY": "not necessary"
   },
   "ORDERS_INFO": {
     "CHANGE": "Order Editing",
@@ -39,5 +41,18 @@
     "USER_ROLE_CASHIER": "Cashier",
     "PROFILE_STATUS_VERIFIED": "Verified",
     "PROFILE_STATUS_UNVERIFIED": "Unverified"
+  },
+  "NAVBAR": {
+    "PROFILE": "Profile",
+    "RESTAURANTS_NAME": "Restaurants"
+  },
+  "TOASTER_AUTH": {
+    "SUCCESS": "The session has been successfully restored!",
+    "ERROR": "Invalid username or password!",
+    "WARNING": "You need to log in to continue!"
+  },
+  "TOASTER_ORDERS": {
+    "SUCCESS": "new order has been successfully created!",
+    "ERROR": "an error occurred!"
   }
 }

@@ -40,7 +40,7 @@ export const LoginForm: React.FC = () => {
         },
         validate,
         onSubmit: values => {
-            dispatch(setUserTC(values))
+            dispatch(setUserTC(values, t))
         },
     });
 

@@ -3,13 +3,14 @@ import {getRestaurantsTC, RestaurantType, UserType} from "../store/reducers/auth
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../store/store";
 import {useNavigate} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 export const Restaurants = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch<any>();
     const restaurants = useSelector<AppStateType, RestaurantType[]>(state => state.auth.restaurants)
     const user = useSelector<AppStateType, UserType>(state => state.auth.user)
-
+    const {t} = useTranslation();
 
     const onClickRestaurant = (id: number) => {
         navigate(`/home/restaurants/${id}`)
@@ -24,7 +25,7 @@ export const Restaurants = () => {
     return (
         <div className="h-full flex flex-col">
             <div>
-                <h1 className={'text-[#1C5279] text-[22px] font-bold mt-6 text-center'}>Restaurants</h1>
+                <h1 className={'text-[#1C5279] text-[22px] font-bold mt-6 text-center'}>{t('NAVBAR.RESTAURANTS_NAME')}</h1>
             </div>
             <div className={"w-full bg-white flex flex-col mt-6 p-6 rounded-3xl"}>
                 {restaurants.map(r => {

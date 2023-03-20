@@ -3,6 +3,7 @@ import {authApi, restaurantsAPI} from "../../api/api";
 import {showErrorToast, showSuccessToast, showWarningToast} from "../../components/Toast/ToastManager";
 import {NavigateFunction} from "react-router/dist/lib/hooks";
 import {AppStateType} from "../store";
+import {useTranslation} from "react-i18next";
 
 //TYPES
 export type ActionType =
@@ -83,31 +84,31 @@ export const setIsLoading = (value: boolean) => ({
 })
 
 //THUNK CREATORS
-export const setUserTC = (user: UserLogging) => async (dispatch: Dispatch) => {
+export const setUserTC = (user: UserLogging, t: any) => async (dispatch: Dispatch) => {
     try {
         dispatch(setIsLoading(true))
         const res = await authApi.login(user)
         dispatch(setLogged(true))
         localStorage.setItem('token', res.access_token)
     } catch (e) {
-        showErrorToast('Неверный логин или пароль!')
+        showErrorToast(t("TOASTER_AUTH.ERROR"))
     } finally {
         dispatch(setIsLoading(false))
     }
 }
 
-export const tokenTC = (token: string, navigate: NavigateFunction) => async (dispatch: Dispatch) => {
+export const tokenTC = (token: string, navigate: NavigateFunction, t: any) => async (dispatch: Dispatch) => {
     try {
         dispatch(setIsLoading(true))
         const user = await authApi.token(token)
         localStorage.setItem('token', user.access_token)
         dispatch(setUser(user))
-        showSuccessToast("Сессия возобновлена!");
+        showSuccessToast(t("TOASTER_AUTH.SUCCESS"));
     } catch (e) {
         setLogged(false);
         localStorage.removeItem('token')
         navigate('/login')
-        showWarningToast('Нужно авторизоваться!')
+        showWarningToast(t("TOASTER_AUTH.WARNING"))
     } finally {
         dispatch(setIsLoading(false))
     }

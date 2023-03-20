@@ -2,14 +2,16 @@ import React from 'react';
 import {useDispatch} from "react-redux";
 import {Input} from "./Input";
 import {createOrderTC} from "../store/reducers/ordersReducer";
+import {useTranslation} from "react-i18next";
 
 export const AddItemForm: React.FC<{restaurantId: number}> = ({restaurantId}) => {
 
     const dispatch = useDispatch<any>()
     const [comment, setComment] = React.useState<string>('')
+    const {t} = useTranslation();
 
     const addOrder = () => {
-        dispatch(createOrderTC(restaurantId, comment))
+        dispatch(createOrderTC(restaurantId, comment, t))
         setComment('');
     }
 
@@ -18,13 +20,13 @@ export const AddItemForm: React.FC<{restaurantId: number}> = ({restaurantId}) =>
             <div className="min-w-[350px] flex justify-between mt-4">
                 <Input
                     className="w-[250px]"
-                    label="Комментарий (не обязательно)"
+                    label={`${t("ORDERS.COMMENT")} (${t("ORDERS.NOT_NECESSARY")})`}
                     value={comment}
                     onChangeText={text => setComment(text)}
                     onPressEnter={addOrder}
 
                 />
-                <button className="btn" onClick={addOrder}>Создать</button>
+                <button className="btn" onClick={addOrder}>{t('ORDERS.CREATE')}</button>
             </div>
         </div>
     );

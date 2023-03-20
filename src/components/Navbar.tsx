@@ -3,6 +3,7 @@ import Lottie from "lottie-react";
 import profile from "../assets/animation/profile.json";
 import orders from "../assets/animation/orders.json";
 import {useLocation, useNavigate} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 type ActiveBarType = 'restaurants' | 'profile';
 
@@ -11,11 +12,11 @@ export const Navbar: React.FC = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const currentLocation = location.pathname.split('/')[2] as ActiveBarType;
-
+    const {t} = useTranslation();
 
     const navbarIcons = [
         {
-            name: 'Рестораны',
+            name: t("NAVBAR.RESTAURANTS_NAME"),
             url: 'restaurants',
             animation: orders,
             ref: useRef<any>(),
@@ -25,7 +26,7 @@ export const Navbar: React.FC = () => {
             labelClassName: 'text-[#1C5279] text-[12px] font-bold mt-1 text-center absolute bottom-[-20px]',
         },
         {
-            name: 'Профиль',
+            name: t("NAVBAR.PROFILE"),
             url: 'profile',
             animation: profile,
             ref: useRef<any>(),
