@@ -16,8 +16,15 @@ module.exports = {
             }
         },
         screens: {
-            'sm':{max:'375px'},
-            'md': {max: '679px'},
+            'sm': {'max': '375px'},
+
+            'md': {'max': '475px'},
+
+            'lg': {'max': '768px'},
+
+            'xl': {'max': '1024px'},
+
+            '2xl': {'min': '1440px'},
         },
     },
     plugins: [require('@tailwindcss/forms')],

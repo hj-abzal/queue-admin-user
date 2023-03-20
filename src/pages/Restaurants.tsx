@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../store/store";
 import {useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
+import {Header} from "../components/Header";
 
 export const Restaurants = () => {
     const navigate = useNavigate();
@@ -24,9 +25,7 @@ export const Restaurants = () => {
 
     return (
         <div className="h-full flex flex-col">
-            <div>
-                <h1 className={'text-[#1C5279] text-[22px] font-bold mt-6 text-center'}>{t('NAVBAR.RESTAURANTS_NAME')}</h1>
-            </div>
+            <Header title={t('NAVBAR.RESTAURANTS_NAME')}/>
             <div className={"w-full bg-white flex flex-col mt-6 p-6 rounded-3xl"}>
                 {restaurants.map(r => {
                     return (

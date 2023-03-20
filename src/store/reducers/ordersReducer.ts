@@ -1,18 +1,18 @@
 import {Dispatch} from "redux";
 import {ordersAPI} from "../../api/api";
 import {setIsLoading, setLogged} from "./authReducer";
-import {showErrorToast, showSuccessToast} from "../../components/Toast/ToastManager";
-import {useTranslation} from "react-i18next";
+import {showErrorToast, showSuccessToast, showWarningToast} from "../../components/Toast/ToastManager";
 
 
 type ActionsType =
     | ReturnType<typeof setOrders>
     | ReturnType<typeof createOrder>
     | ReturnType<typeof setSelectedOrder>
+    | ReturnType<typeof updateOrder>
 
 export type OrdersInitStateType = {
     orders: OrderType[],
-    selectedOrder: OrderType | null,
+    selectedOrder: OrderType,
 }
 export type OrderType = {
     id: number
@@ -22,7 +22,7 @@ export type OrderType = {
 }
 export const OrdersInitState = {
     orders: [],
-    selectedOrder: null,
+    selectedOrder: {} as OrderType,
 }
 
 //REDUCER LOGIC
@@ -39,6 +39,12 @@ export const ordersReducer = (state: OrdersInitStateType = OrdersInitState, acti
                ...state,
                orders: [...state.orders, action.order],
            }
+        }
+        case 'UPDATE_ORDER':{
+            return{
+                ...state,
+                selectedOrder:{...state.selectedOrder,description:action.description, is_ready:action.is_ready}
+            }
         }
         case 'SET_SELECTED_ORDER': {
             return {
@@ -65,7 +71,12 @@ export const setSelectedOrder = (order: OrderType) => ({
     type: 'SET_SELECTED_ORDER' as const, order
 });
 
+export const updateOrder = (id: number,description:string,is_ready: boolean) => ({
+    type: 'UPDATE_ORDER' as const, id,description,is_ready
+});
+
 //THUNK CREATORS
+
 export const getOrdersTC = (id: number) => async (dispatch: Dispatch) => {
     try {
         dispatch(setIsLoading(true))
@@ -103,6 +114,18 @@ export const getSelectedOrderTC = (restaurantId: string, orderId: string) => asy
         const res = await ordersAPI.getOrder(restaurantId, orderId)
         dispatch(setSelectedOrder(res.order))
     } catch (e) {
+
+    } finally {
+        dispatch(setIsLoading(false))
+    }
+}
+export const updateOrderTC = (restaurantId: number, orderId: number,is_ready:boolean,description:string) => async (dispatch: Dispatch) => {
+    try {
+        dispatch(setIsLoading(true))
+        const res = await ordersAPI.updateOrder(restaurantId, orderId,is_ready,description)
+        dispatch(updateOrder(orderId,description,is_ready))
+    } catch (e) {
+        showWarningToast('Вы уже не можете изменить статус заказа!')
 
     } finally {
         dispatch(setIsLoading(false))

@@ -68,6 +68,18 @@ export const ordersAPI = {
         })
             .then(res => res.data)
     },
+    updateOrder: (
+        restaurantId: number,
+        orderId: number,
+        is_ready: boolean,
+        description: string
+    ) => {
+        return instance.put(`restaurants/${restaurantId}/orders/${orderId}`, {
+            is_ready,
+            description
+        })
+            .then(res => res.data)
+    },
 }
 
 
