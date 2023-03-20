@@ -15,13 +15,13 @@ export const Table: React.FC<TableProps> = ({orders, title, variant, onItemClick
         primary: {
             table: 'flex justify-center',
             main:  'flex text-center font-medium justify-center text-[white] overflow-y-scroll p-2.5 rounded-[20px_20px_0_0] border-[none] bg-accent',
-            border: 'h-[220px] w-[350px] flex flex-row border justify-evenly flex-wrap overflow-y-scroll rounded-[0_0_8px_8px] border-solid border-2 p-1  border-[#fe540e]',
+            border: 'h-[200px] w-[350px] flex flex-row border justify-evenly flex-wrap overflow-y-scroll rounded-[0_0_8px_8px] border-solid border-2 p-1  border-[#fe540e]',
             order: 'h-20 font-bold p-2 min-w-[80px] text-[20px] bg-white flex justify-center items-center shadow-[0_2px_5px_0_rgba(0,0,0,0.4)]  m-[5px] px-[5px] rounded-[10px] border-2 border-[#fe540e]'
         },
         secondary: {
             table: 'flex justify-center',
             main:  'flex text-center font-medium justify-center text-[white] overflow-y-scroll p-2.5 rounded-[20px_20px_0_0] border-[none] bg-[green]',
-            border: 'h-[220px] w-[350px] flex flex-row border justify-evenly flex-wrap overflow-y-scroll rounded-[0_0_8px_8px] border-solid border-2 p-1 border-[green]',
+            border: 'h-[2-0px] w-[350px] flex flex-row border justify-evenly flex-wrap overflow-y-scroll rounded-[0_0_8px_8px] border-solid border-2 p-1 border-[green]',
             order: 'h-20 font-bold p-2 min-w-[80px] text-[20px] bg-white flex justify-center items-center shadow-[0_2px_5px_0_rgba(0,0,0,0.4)]  m-[5px] px-[5px] rounded-[10px] border-2 border-[green]'
         }
     }
