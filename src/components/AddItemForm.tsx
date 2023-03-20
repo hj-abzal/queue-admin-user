@@ -1,7 +1,7 @@
 import React from 'react';
 import {useDispatch} from "react-redux";
-import {createOrderTC} from "../store/reducers/orders-reducer";
 import {Input} from "./Input";
+import {createOrderTC} from "../store/reducers/ordersReducer";
 
 export const AddItemForm: React.FC<{restaurantId: number}> = ({restaurantId}) => {
 

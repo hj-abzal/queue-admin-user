@@ -5,8 +5,6 @@ import {SingleCardPage} from "../components/SingleCardPage";
 
 
 export const ProfilePage = () => {
-
-
     return (
         <div>
             <ProfileHeader/>

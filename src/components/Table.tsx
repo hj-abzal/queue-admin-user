@@ -1,5 +1,5 @@
 import React from 'react';
-import {OrderType} from "../store/reducers/orders-reducer";
+import {OrderType} from "../store/reducers/ordersReducer";
 
 
 type TableProps = {

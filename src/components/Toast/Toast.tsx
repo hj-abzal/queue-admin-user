@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import {ToasterType} from "./ToastManager";
+import {useTranslation} from "react-i18next";
 
 export interface ToastProps {
     id: string;
@@ -10,6 +11,7 @@ export interface ToastProps {
 }
 
 const Toast: React.FC<ToastProps> = (props) => {
+    const {t} = useTranslation();
     const { destroy, title, duration = 0, id, type } = props;
 
     useEffect(() => {
@@ -55,7 +57,7 @@ const Toast: React.FC<ToastProps> = (props) => {
                           clip-rule="evenodd"></path>
                 </svg>
             </div>
-            <div id={'innerText'} className="ml-3 text-sm font-normal">{title}</div>
+            <div id={'innerText'} className="ml-3 text-sm font-normal">{t(title)}</div>
         </div>
     );
 };

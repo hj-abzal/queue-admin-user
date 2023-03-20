@@ -1,6 +1,6 @@
 import {UserLogging, UserType} from "../store/reducers/authReducer";
 import axios from 'axios'
-import {OrderType} from "../store/reducers/orders-reducer";
+import {OrderType} from "../store/reducers/ordersReducer";
 
 //TYPES
 

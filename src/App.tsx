@@ -9,11 +9,11 @@ import {OrderEditing} from "./components/OrderEditing";
 import {Loader} from "./components/Loader";
 import {AppStateType} from "./store/store";
 import {Restaurants} from "./pages/Restaurants";
-import {LoginForm} from "./pages/Main/LoginForm";
+import {LoginForm} from "./pages/LoginForm";
 import {ProfilePage} from "./pages/ProfilePage";
 
 export const App: React.FC = () => {
-    const loader = useSelector<AppStateType, boolean>(state => state.orders.loader);
+    const loader = useSelector<AppStateType, boolean>(state => state.auth.isLoading);
 
     return (
         <div className="w-screen h-screen">

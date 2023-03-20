@@ -6,7 +6,6 @@ export type ToasterType = 'error' | 'success' | 'warning'
 interface ToastOptions {
     id?: string;
     title: string;
-    content: string;
     duration?: number;
     type: ToasterType;
 }
@@ -50,3 +49,28 @@ export class ToastManager {
 }
 
 export const toast = new ToastManager();
+
+
+export const showErrorToast = (message: string) => {
+    toast.show({
+        title: message,
+        type: 'error',
+        duration: 2000
+    })
+}
+
+export const showSuccessToast = (message: string) => {
+    toast.show({
+        title: message,
+        type: 'success',
+        duration: 2000
+    })
+}
+
+export const showWarningToast = (message: string) => {
+    toast.show({
+        title: message,
+        type: 'warning',
+        duration: 2000
+    })
+}

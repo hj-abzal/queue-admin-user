@@ -2,8 +2,8 @@ import React, {ChangeEvent, useEffect} from 'react';
 import {useTranslation} from "react-i18next";
 import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {getSelectedOrderTC, OrderType} from "../store/reducers/orders-reducer";
 import {AppStateType} from "../store/store";
+import {getSelectedOrderTC, OrderType} from "../store/reducers/ordersReducer";
 
 export const OrderEditing: React.FC = () => {
 
