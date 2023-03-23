@@ -4,8 +4,8 @@ import {AppStateType} from "../store/store";
 import {useTranslation} from "react-i18next";
 import {useNavigate, useParams} from "react-router-dom";
 import {AddItemForm} from "../components/AddItemForm";
-import {Table} from "../components/Table";
 import {getOrdersTC, OrdersInitStateType} from "../store/reducers/ordersReducer";
+import {Table} from "../components/Table";
 
 export const OrdersPage: React.FC = () => {
     const {restaurantId} = useParams()
@@ -28,7 +28,7 @@ export const OrdersPage: React.FC = () => {
     return (
         <div className="h-full flex flex-col">
             <AddItemForm restaurantId={Number(restaurantId)}/>
-            <div className="flex-grow flex flex-col justify-around">
+            <div className="flex-grow flex flex-col gap-4 justify-center overflow-y-auto">
                 <Table
                     orders={notReady}
                     variant={'primary'}

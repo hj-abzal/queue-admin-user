@@ -9,37 +9,22 @@ type HeaderPropsType = {
 }
 export const Header: React.FC<HeaderPropsType> = ({title, backButton, children}) => {
     const navigate = useNavigate()
-    const styles = {
-        button: '',
-        header: '',
-        title: '',
-        children: ''
-    }
-    if (!backButton && !children) {
-        styles['button'] = 'hidden'
-        styles['title'] = 'text-[#1C5279] basis-3/5 text-[15px] font-bold text-center'
-        styles['header'] = 'flex items-center justify-evenly'
-    } else if (backButton && !children) {
-        styles['button'] = 'flex items-center ml-2 gap-x-2 h-[40px] text-[12px]'
-        styles['header'] = 'flex items-center'
-        styles['title'] = 'text-[#1C5279] text-[15px] basis-3/5 font-bold text-center'
-    } else {
-        styles['button'] = 'flex items-center ml-2 gap-x-2 h-[40px] text-[12px]'
-        styles['title'] = 'text-[#1C5279] text-[15px] font-bold text-center'
-        styles['header'] = 'flex items-center justify-between'
-        styles['children'] = 'mr-2'
-    }
     return (
-        <div className={styles['header']}>
-            <div className={styles["button"]}
-                 onClick={() => navigate(-1)}>
-                <ArrowIcon/>
-                Назад
-            </div>
-            <div className={styles['title']}>{title}</div>
-            <div className={styles['children']}>
-                {children}
-            </div>
+        <div className="w-full h-[60px] bg-white flex items-center justify-center relative">
+            {
+                backButton && <div
+                    className="absolute translate-x-0 -translate-y-2/4 left-2.5 top-2/4 flex items-center gap-x-2 text-[18px]"
+                    onClick={() => navigate(-1)}>
+                    <ArrowIcon/>
+                    <span>Назад</span>
+                </div>
+            }
+            <div className="text-[#1C5279] basis-3/5 text-[22px] font-bold text-center">{title}</div>
+            {
+                children && <div className="absolute translate-x-2/4 -translate-y-2/4 left-[85%] top-2/4">
+                    {children}
+                </div>
+            }
         </div>
 
     );

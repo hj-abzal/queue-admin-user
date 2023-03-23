@@ -16,7 +16,7 @@ export const AddItemForm: React.FC<{restaurantId: number}> = ({restaurantId}) =>
     }
 
     return (
-        <div className="h-[60px] w-full flex justify-center ">
+        <div className="flex justify-center">
             <div className="min-w-[350px] flex justify-between mt-4">
                 <Input
                     className="w-[250px]"

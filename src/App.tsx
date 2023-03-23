@@ -16,7 +16,7 @@ export const App: React.FC = () => {
     const loader = useSelector<AppStateType, boolean>(state => state.auth.isLoading);
 
     return (
-        <div className="w-screen h-screen">
+        <div className="w-screen h-screen relative">
             {loader && <Loader/>}
             <Routes>
                 <Route path={'/login'} element={<SingleCardPage><LoginForm/></SingleCardPage>}/>

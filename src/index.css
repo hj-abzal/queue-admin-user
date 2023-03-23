@@ -14,7 +14,7 @@ body {
     }
 
     .card {
-        @apply w-[736px] flex gap-7 bg-white mb-0 mx-auto px-7 py-6 rounded-2xl shadow-[0_22px_47px_rgba(28,82,121,0.22)] md:flex-col md:w-[350px]
+        @apply flex gap-7 bg-white mb-0 mx-auto px-7 py-6 rounded-2xl shadow-[0_22px_47px_rgba(28,82,121,0.22)] w-[350px];
     }
 
     .card-section {

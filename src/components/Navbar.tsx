@@ -49,7 +49,7 @@ export const Navbar: React.FC = () => {
     }
     const applyActiveStyle = (url: string, className: string) => url === activeBar ? className : `${className} opacity-50`
     return (
-        <div className={'w-full bg-white text-white flex justify-evenly items-center pt-1 pb-3'}>
+        <div className={'h-[88px] bg-white text-white flex justify-evenly items-center pt-1 pb-3'}>
             {
                 navbarIcons.map((item) => {
                     return (

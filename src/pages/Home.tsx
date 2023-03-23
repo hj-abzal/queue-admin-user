@@ -20,11 +20,13 @@ export const Home: React.FC = () => {
         }
     }, []);
     return (
-        <div className='h-full flex flex-col overflow-hidden'>
+        <div className='h-[calc(100%_-_88px)] flex flex-col overflow-y-auto'>
             <div className="flex-grow">
                 <Outlet/>
             </div>
-            <Navbar/>
+            <div className="w-screen absolute left-0 bottom-0">
+                <Navbar/>
+            </div>
         </div>
     );
 };
