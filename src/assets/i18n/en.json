@@ -25,7 +25,9 @@
     "DONE": "Done",
     "NOT_READY": "Preparing",
     "QR": "Show QR",
-    "DELETE": "Delete"
+    "DELETE": "Delete",
+    "SAVE": "Save"
+
   },
   "ORDERS_CREATE": {
     "CREATE_PAGE": "Creating an order",

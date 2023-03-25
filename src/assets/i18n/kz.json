@@ -24,7 +24,8 @@
     "DONE": "Дайын",
     "NOT_READY": "Дайындалуда",
     "QR": "Көрсету QR",
-    "DELETE": "Жою"
+    "DELETE": "Жою",
+    "SAVE": "Сақтау"
   },
   "ORDERS_CREATE": {
     "CREATE_PAGE": "Тапсырыс жасау",

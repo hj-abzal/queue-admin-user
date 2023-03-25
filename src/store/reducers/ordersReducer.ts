@@ -9,6 +9,9 @@ type ActionsType =
     | ReturnType<typeof createOrder>
     | ReturnType<typeof setSelectedOrder>
     | ReturnType<typeof updateOrder>
+    | ReturnType<typeof deleteOrder>
+
+
 
 export type OrdersInitStateType = {
     orders: OrderType[],
@@ -52,6 +55,12 @@ export const ordersReducer = (state: OrdersInitStateType = OrdersInitState, acti
                 selectedOrder: action.order
             }
         }
+        case 'DELETE_ORDER':{
+            return {
+                ...state,
+                orders: state.orders.filter(order=>order.id!==action.id)
+            }
+        }
         default:
             return state
     }
@@ -73,6 +82,9 @@ export const setSelectedOrder = (order: OrderType) => ({
 
 export const updateOrder = (id: number,description:string,is_ready: boolean) => ({
     type: 'UPDATE_ORDER' as const, id,description,is_ready
+});
+export const deleteOrder = (id:number) => ({
+    type: 'DELETE_ORDER' as const, id
 });
 
 //THUNK CREATORS
@@ -126,6 +138,24 @@ export const updateOrderTC = (restaurantId: number, orderId: number,is_ready:boo
         dispatch(updateOrder(orderId,description,is_ready))
     } catch (e) {
         showWarningToast('Вы уже не можете изменить статус заказа!')
+
+    } finally {
+        dispatch(setIsLoading(false))
+    }
+}
+
+export const deleteOrderTC = (restaurantId: number, orderId: number) => async (dispatch: Dispatch) => {
+    try {
+        dispatch(setIsLoading(true))
+        const token = localStorage.getItem('token');
+        if (token) {
+            const res = await ordersAPI.deleteOrder(restaurantId,orderId,token)
+            dispatch(deleteOrder(orderId))
+        } else {
+            dispatch(setLogged(false))
+        }
+    } catch (e) {
+        showWarningToast('Ошибка!')
 
     } finally {
         dispatch(setIsLoading(false))

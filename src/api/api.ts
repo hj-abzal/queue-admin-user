@@ -80,6 +80,15 @@ export const ordersAPI = {
         })
             .then(res => res.data)
     },
+    deleteOrder:(
+        restaurantId: number,
+        orderId: number,
+        token:string
+    )=>{
+        instance.defaults.headers.common['Authorization'] = `Bearer ${token}`
+        return instance.delete(`/restaurants/${restaurantId}/orders/${orderId}`)
+            .then(res=>res.data)
+    },
 }
 
 
