@@ -136,23 +136,27 @@ export const updateOrderTC = (restaurantId: number, orderId: number,is_ready:boo
         dispatch(setIsLoading(true))
         const res = await ordersAPI.updateOrder(restaurantId, orderId,is_ready,description)
         dispatch(updateOrder(orderId,description,is_ready))
+        showSuccessToast('TOASTER_ORDER_EDITING.SUCCESS_DESCRIPTION')
     } catch (e) {
-        showWarningToast('Вы уже не можете изменить статус заказа!')
+        showWarningToast('TOASTER_ORDER_EDITING.ERROR_DESCRIPTION')
 
     } finally {
         dispatch(setIsLoading(false))
     }
 }
 
-export const deleteOrderTC = (restaurantId: number, orderId: number) => async (dispatch: Dispatch) => {
+export const deleteOrderTC = (restaurantId: number, orderId: number,t:any) => async (dispatch: Dispatch) => {
     try {
         dispatch(setIsLoading(true))
         const token = localStorage.getItem('token');
         if (token) {
             const res = await ordersAPI.deleteOrder(restaurantId,orderId,token)
             dispatch(deleteOrder(orderId))
+            showSuccessToast('TOASTER_ORDER_EDITING.SUCCESS_DELETING')
+
         } else {
             dispatch(setLogged(false))
+            showWarningToast('TOASTER_ORDER_EDITING.ERROR_DELETING')
         }
     } catch (e) {
         showWarningToast('Ошибка!')
