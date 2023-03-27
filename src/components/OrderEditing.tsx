@@ -39,13 +39,14 @@ export const OrderEditing: React.FC = () => {
 
     const onChangeOrderInfo = (restaurantId: number, orderId: number, is_ready: boolean, description: string) => {
         dispatch(updateOrderTC(restaurantId, orderId, is_ready, description))
+        setIsBtnShowed(false)
     }
     const modalHandler = (value:boolean) =>{
         setIsModalOpen(value)
     }
     const onDeleteHandler = () =>{
         navigate(-1)
-        dispatch(deleteOrderTC(Number(restaurantId),Number(orderId)))
+        dispatch(deleteOrderTC(Number(restaurantId),Number(orderId),t))
     }
     const buttonClass = isBtnShowed ? 'rounded-lg bg-accent text-white disabled:opacity-40 pr-6 pl-6 p-1' : 'hidden'
     return (
@@ -75,7 +76,7 @@ export const OrderEditing: React.FC = () => {
                             <span className={classNames('px-4 py-2 rounded-r-md',{
                                 'bg-[#fe540e] text-white': order?.is_ready,
                                 'bg-gray-300 text-black': !order?.is_ready
-                            })}>{t('ORDERS_CREATE.WAITING')}</span>
+                            })}>{t('ORDERS_INFO.DONE')}</span>
                         </label>
                     </main>
                     <div className={'font-bold mt-12 text-4xl'}>

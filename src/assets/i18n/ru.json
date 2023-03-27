@@ -54,5 +54,12 @@
   "TOASTER_ORDERS": {
     "SUCCESS": "Новый заказ создан!",
     "ERROR": "Ошибка при создания заказа!"
+  },
+  "TOASTER_ORDER_EDITING": {
+    "SUCCESS_DELETING": "Ваш заказ успешно удален",
+    "SUCCESS_DESCRIPTION": "Изменение сохранено",
+    "ERROR_DELETING": "Ошибка",
+    "ERROR_DESCRIPTION": "Изменение не получилось сохранить. Попробуйте позже"
+
   }
 }

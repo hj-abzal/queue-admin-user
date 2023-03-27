@@ -54,7 +54,14 @@
     "WARNING": "You need to log in to continue!"
   },
   "TOASTER_ORDERS": {
-    "SUCCESS": "new order has been successfully created!",
-    "ERROR": "an error occurred!"
+    "SUCCESS": "New order has been successfully created!",
+    "ERROR": "An error occurred!"
+  },
+  "TOASTER_ORDER_EDITING": {
+    "SUCCESS_DELETING": "Your order has been successfully deleted!",
+    "SUCCESS_DESCRIPTION": "The change is saved!",
+    "ERROR_DELETING": "Error!",
+    "ERROR_DESCRIPTION": "The change could not be saved. Try again later."
+
   }
 }

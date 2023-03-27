@@ -54,5 +54,11 @@
   "TOASTER_ORDERS": {
     "SUCCESS": "Жаңа тапсырыс жасалды!",
     "ERROR": "Тапсырыс жасау кезінде қате пайда болды!"
+  },
+  "TOASTER_ORDER_EDITING": {
+    "SUCCESS_DELETING": "Тапсырысыңыз сәтті жойылды.",
+    "SUCCESS_DESCRIPTION": "Өзгеріс сақталды",
+    "ERROR_DELETING": "Қате",
+    "ERROR_DESCRIPTION": "Өзгеріс сақталмады. Кейінірек қайталап көріңіз"
   }
 }
