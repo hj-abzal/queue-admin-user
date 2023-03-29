@@ -1,47 +1,81 @@
 import React from 'react';
 import {OrderType} from "../store/reducers/ordersReducer";
+import {useTranslation} from "react-i18next";
 
-
-type TableProps = {
-    title: string,
+type TableDefaultPropsType = {
+    orders: OrderType[]
     variant: 'primary' | 'secondary'
-    orders: OrderType[],
+    title: string
     onItemClicked: (id: number) => void
+
 }
-
-export const Table: React.FC<TableProps> = ({orders, title, variant, onItemClicked}) => {
-
+export const Table: React.FC<TableDefaultPropsType> = ({orders, variant, title, onItemClicked}) => {
+    const {t} = useTranslation()
     const classes = {
         primary: {
-            table: 'flex justify-center',
-            main:  'flex text-center font-medium justify-center text-[white] overflow-y-scroll p-2.5 rounded-[20px_20px_0_0] border-[none] bg-accent',
-            border: 'h-[200px] w-[350px] flex flex-row border justify-evenly flex-wrap overflow-y-scroll rounded-[0_0_20px_20px] border-solid border-2 p-1  border-[#fe540e]',
-            order: 'h-20 font-bold p-2 min-w-[80px] text-[20px] bg-white flex justify-center items-center shadow-[0_2px_5px_0_rgba(0,0,0,0.4)]  m-[5px] px-[5px] rounded-[10px] border-2 border-[#fe540e]'
+            table: 'border-accent',
+            main: 'bg-accent'
         },
         secondary: {
-            table: 'flex justify-center',
-            main:  'flex text-center font-medium justify-center text-[white] overflow-y-scroll p-2.5 rounded-[20px_20px_0_0] border-[none] bg-[green]',
-            border: 'h-[200px] w-[350px] flex flex-row border justify-evenly flex-wrap overflow-y-scroll rounded-[0_0_20px_20px] border-solid border-2 p-1 border-[green]',
-            order: 'h-20 font-bold p-2 min-w-[80px] text-[20px] bg-white flex justify-center items-center shadow-[0_2px_5px_0_rgba(0,0,0,0.4)]  m-[5px] px-[5px] rounded-[10px] border-2 border-[green]'
+            table: 'border-[green]',
+            main: 'bg-[green]'
         }
     }
-
     return (
-        <div className={classes[variant].table}>
-            <div className={'flex flex-col'}>
-                <div>
+        <div className="flex justify-center">
+            <div>
+                <div
+                    className={`font-medium min-w-full text-center text-white rounded-[20px_20px_0_0] h-[35px] flex justify-center items-center ${classes[variant].main}`}>{title}</div>
+                <div className="inline-block w-[350px]">
                     <div
-                        className={classes[variant].main}>{title}</div>
-                    <div
-                        className={classes[variant].border}>
-                        {orders.map((t) => {
-                           return <button key={t.id}
-                                          className={classes[variant].order}
-                                          onClick={() => onItemClicked(t.id)}>{t.key}
-                           </button>
-                        })}</div>
+                        className={`overflow-y-auto h-[200px] border-2 flex flex-col items-center rounded-[0_0_20px_20px] ${classes[variant].table}`}>
+                        <table
+                            className="min-w-full border text-center font-light">
+                            <thead className="border-b font-medium dark:border-neutral-500">
+                            <tr className={''}>
+                                <th
+                                    scope="col"
+                                    colSpan={2}
+                                    className="border-r border-neutral-500">
+                                    {t('ORDERS.CODE')}
+                                </th>
+
+                                <th
+                                    scope="col"
+                                    colSpan={2}
+                                    className="border-r py-[0.5rem] border-neutral-500">
+                                    {t('ORDERS.COMMENTS')}
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {orders.map((order) => {
+                                return (
+                                    <tr className="border-b border-neutral-500"
+                                        onClick={() => onItemClicked(order.id)}
+                                    >
+                                        <td
+                                            className="whitespace-nowrap border-r px-6 py-4 border-neutral-500"
+                                            colSpan={2}
+                                        >
+                                            {order.key}
+                                        </td>
+
+                                        <td
+                                            className="whitespace-nowrap border-r px-6 py-4 border-neutral-500"
+                                            colSpan={2}
+                                        >
+                                            {order.description}
+                                        </td>
+                                    </tr>
+                                )
+                            })}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     );
 };
+

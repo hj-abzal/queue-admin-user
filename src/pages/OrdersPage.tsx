@@ -13,7 +13,6 @@ export const OrdersPage: React.FC = () => {
     const dispatch = useDispatch<any>();
     const navigate = useNavigate();
     const orders = useSelector<AppStateType, OrdersInitStateType>(state => state.orders)
-
     const readyOrders = orders.orders.filter(order => order.is_ready)
     const notReady = orders.orders.filter(order => !order.is_ready)
 

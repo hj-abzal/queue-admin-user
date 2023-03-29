@@ -17,7 +17,9 @@
     "NOT_READY": "Getting ready",
     "BACK": "Back",
     "COMMENT": "Comment",
-    "NOT_NECESSARY": "not necessary"
+    "NOT_NECESSARY": "not necessary",
+    "CODE": "Code",
+    "COMMENTS": "Comments"
   },
   "ORDERS_INFO": {
     "CHANGE": "Editing",

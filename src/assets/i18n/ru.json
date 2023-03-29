@@ -16,7 +16,9 @@
     "NOT_READY": "Готовится",
     "BACK": "Назад",
     "COMMENT": "Комментарий",
-    "NOT_NECESSARY": "не обязательно"
+    "NOT_NECESSARY": "не обязательно",
+    "CODE": "Код",
+    "COMMENTS": "Комментарии"
   },
   "ORDERS_INFO": {
     "CHANGE": "Редактирование",

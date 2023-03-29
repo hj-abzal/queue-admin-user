@@ -16,7 +16,9 @@
     "NOT_READY": "Дайындалуда",
     "BACK": "Артқа",
     "COMMENT": "Комментарий",
-    "NOT_NECESSARY": "міндетті емес"
+    "NOT_NECESSARY": "міндетті емес",
+    "CODE": "Код",
+    "COMMENTS": "Комментарии"
   },
   "ORDERS_INFO": {
     "CHANGE": "Өңдеу",
