@@ -92,7 +92,7 @@ export const OrderEditing: React.FC = () => {
             </div>
             {
                 isModalOpen &&
-                ReactDOM.createPortal(<Modal setIsModalOpen={setIsModalOpen} qrValue={'lol'}/>,document.getElementById('portal')!)}
+                ReactDOM.createPortal(<Modal setIsModalOpen={setIsModalOpen} qrValue={`https://kezek.online/#/restaurants/${restaurantId}/orders/${orderId}`}/>,document.getElementById('portal')!)}
         </div>
     );
 };
