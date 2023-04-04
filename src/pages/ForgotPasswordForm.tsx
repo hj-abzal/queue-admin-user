@@ -1,22 +1,20 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {useCallback} from 'react';
 import {Input} from "../components/Input";
 import {useFormik} from "formik";
 import {useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
-import {setUserTC} from "../store/reducers/authReducer";
 import {AppStateType} from "../store/store";
-import {Language} from "../components/Language";
 
-const validate = ({password, email}: initStateType) => {
+const validate = ({password, secondPassword}: initStateType) => {
     let errors = {};
     if (!password) {
         errors = {...errors, name: "PAYMENT_FORM.ERROR.CARD_HOLDER"};
     }
 
-    if (!email) {
+    if (!secondPassword) {
         errors = {...errors, email: "LOGIN_FORM.ERROR.EMAIL"};
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(secondPassword)) {
         errors = {...errors, email: "LOGIN_FORM.ERROR.EMAIL"};
     }
     return errors;
@@ -24,11 +22,11 @@ const validate = ({password, email}: initStateType) => {
 
 type initStateType = {
     password: string;
-    email: string;
+    secondPassword: string;
 }
 
 
-export const LoginForm: React.FC = () => {
+export const ForgotPasswordForm: React.FC = () => {
 
     const {t} = useTranslation();
     const dispatch = useDispatch<any>()
@@ -37,11 +35,11 @@ export const LoginForm: React.FC = () => {
     const {values, handleSubmit, handleChange, touched, errors, setTouched} = useFormik({
         initialValues: {
             password: 'qwerty',
-            email: 'abzal008@mail.ru',
+            secondPassword: 'abzal008',
         },
         validate,
         onSubmit: values => {
-            dispatch(setUserTC(values, t))
+            // dispatch(setUserTC(values, t))
         },
     });
 
@@ -50,27 +48,21 @@ export const LoginForm: React.FC = () => {
         handleChange(e);
     }, []);
 
-    const onEmailChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        e.currentTarget.value = emailRegex(e.currentTarget.value);
+    const onSecondPasswordChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+        e.currentTarget.value = latinRegex(e.currentTarget.value);
         handleChange(e);
     }, []);
 
     const setTouchedAll = () => {
         setTouched({
             password: true,
-            email: true,
+            secondPassword: true,
         })
     };
 
 
-    const emailRegex = (v: string) => v.replace(/[^A-Z-0-9_.-@]/gi, "").replace(/;/i, "");
     const latinRegex = (v: string) => v.replace(/[^A-Z-0-9_]/gi, "");
 
-    useEffect(() => {
-        if (isLogged) {
-            navigate(`/home/restaurants`)
-        }
-    }, [isLogged])
     return (
         <form className="card-section" onSubmit={handleSubmit}>
             <h2 className="text-2xl font-bold mb-4 text-center">Queue Admin</h2>
@@ -79,9 +71,9 @@ export const LoginForm: React.FC = () => {
                     label={t("LOGIN_FORM.EMAIL")}
                     helperText={t("LOGIN_FORM.EMAIL_HINT")}
                     name="email"
-                    onChange={onEmailChange}
-                    value={values.email}
-                    error={(touched.email && errors.email) ? t(errors.email) : ''}
+                    onChange={onSecondPasswordChange}
+                    value={values.secondPassword}
+                    error={(touched.secondPassword && errors.secondPassword) ? t(errors.secondPassword) : ''}
                 />
 
                 <Input
@@ -98,17 +90,9 @@ export const LoginForm: React.FC = () => {
                 className='btn'
                 onClick={setTouchedAll}
                 type="submit">
-                {t('LOGIN_FORM.LOG_IN')}
+                Сменить пароль
             </button>
-            <div
-            className={'mt-4 flex justify-between'}
-            >
-                <Language/>
-            <div
-            className={'text-sm text-accent-light'}>
-                {t('LOGIN_FORM.FORGOT_PASSWORD')}
-            </div>
-            </div>
+
         </form>
     );
 };

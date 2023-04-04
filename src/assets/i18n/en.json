@@ -8,7 +8,8 @@
     "ERROR": {
       "INVALID_PASSWORD": "Invalid password",
       "EMAIL": "Invalid email address"
-    }
+    },
+    "FORGOT_PASSWORD": "Forgot password?"
   },
 
   "ORDERS": {
@@ -28,8 +29,14 @@
     "NOT_READY": "Preparing",
     "QR": "Show QR",
     "DELETE": "Delete",
-    "SAVE": "Save"
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "MODAL": {
+      "DELETING": "Are you sure you want to delete the order?",
+      "NO": "No",
+      "QR": "Scan QR code"
 
+    }
   },
   "ORDERS_CREATE": {
     "CREATE_PAGE": "Creating an order",

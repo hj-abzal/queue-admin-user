@@ -40,7 +40,7 @@ export const ordersReducer = (state: OrdersInitStateType = OrdersInitState, acti
         case 'CREATE_ORDER': {
            return {
                ...state,
-               orders: [...state.orders, action.order],
+               orders: [action.order, ...state.orders],
            }
         }
         case 'UPDATE_ORDER':{
@@ -95,7 +95,7 @@ export const getOrdersTC = (id: number) => async (dispatch: Dispatch) => {
         const token = localStorage.getItem('token');
         if (token) {
             const orders = await ordersAPI.getAllOrders(id, token)
-            dispatch(setOrders(orders))
+            dispatch(setOrders(orders.sort((a,b)=>b.id-a.id)))
         } else {
             dispatch(setLogged(false))
         }
