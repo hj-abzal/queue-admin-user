@@ -25,7 +25,7 @@ export const Table: React.FC<TableDefaultPropsType> = ({orders, variant, title, 
         <div className="flex justify-center">
             <div>
                 <div
-                    className={`font-medium min-w-full text-center text-white rounded-[20px_20px_0_0] h-[35px] flex justify-center items-center ${classes[variant].main}`}>{title}</div>
+                    className={`font-medium w-[350px] text-center text-white rounded-[20px_20px_0_0] h-[35px] flex justify-center items-center ${classes[variant].main}`}>{title}</div>
                 <div className="inline-block w-[350px]">
                     <div
                         className={`overflow-y-auto h-[200px] border-2 flex flex-col items-center rounded-[0_0_20px_20px] ${classes[variant].table}`}>

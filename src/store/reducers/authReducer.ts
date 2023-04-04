@@ -3,7 +3,6 @@ import {authApi, restaurantsAPI} from "../../api/api";
 import {showErrorToast, showSuccessToast, showWarningToast} from "../../components/Toast/ToastManager";
 import {NavigateFunction} from "react-router/dist/lib/hooks";
 import {AppStateType} from "../store";
-import {useTranslation} from "react-i18next";
 
 //TYPES
 export type ActionType =
@@ -105,7 +104,7 @@ export const tokenTC = (token: string, navigate: NavigateFunction, t: any) => as
         dispatch(setUser(user))
         showSuccessToast(t("TOASTER_AUTH.SUCCESS"));
     } catch (e) {
-        setLogged(false);
+        dispatch(setLogged(false));
         localStorage.removeItem('token')
         navigate('/login')
         showWarningToast(t("TOASTER_AUTH.WARNING"))
