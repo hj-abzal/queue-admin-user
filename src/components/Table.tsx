@@ -36,7 +36,7 @@ export const Table: React.FC<TableDefaultPropsType> = ({orders, variant, title, 
                                 <th
                                     scope="col"
                                     colSpan={2}
-                                    className="border-r border-neutral-500">
+                                    className="border-r border-neutral-500 w-20">
                                     {t('ORDERS.CODE')}
                                 </th>
 
