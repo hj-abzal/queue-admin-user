@@ -37,7 +37,7 @@ export const LoginForm: React.FC = () => {
     const {values, handleSubmit, handleChange, touched, errors, setTouched} = useFormik({
         initialValues: {
             password: 'qwerty',
-            email: 'abzal008@mail.ru',
+            email: '171-421@mail.ru',
         },
         validate,
         onSubmit: values => {
@@ -101,13 +101,13 @@ export const LoginForm: React.FC = () => {
                 {t('LOGIN_FORM.LOG_IN')}
             </button>
             <div
-            className={'mt-4 flex justify-between'}
+                className={'mt-4 flex justify-between'}
             >
                 <Language/>
-            <div
-            className={'text-sm text-accent-light'}>
-                {t('LOGIN_FORM.FORGOT_PASSWORD')}
-            </div>
+                {/*<div*/}
+                {/*    className={'text-sm text-accent-light'}>*/}
+                {/*    {t('LOGIN_FORM.FORGOT_PASSWORD')}*/}
+                {/*</div>*/}
             </div>
         </form>
     );

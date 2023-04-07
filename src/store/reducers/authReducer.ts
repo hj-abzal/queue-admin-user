@@ -33,7 +33,7 @@ export type RestaurantType = {
     id: number;
     url: string;
     title: string;
-    img: string;
+    logo: string;
 }
 
 //REDUCER

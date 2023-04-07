@@ -10,7 +10,7 @@ export type LoginResponseType = {
 
 type ResponseOrdersType = {
     id: number
-    img: string
+    logo: string
     title: string
     url: string
     orders: OrderType[]

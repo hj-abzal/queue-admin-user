@@ -34,7 +34,7 @@ export const Restaurants = () => {
                              className={"relative flex justify-center items-center last:mb-0 mb-7 h-[180px] w-full gap-7 bg-white mb-0 mx-auto px-0 py-0 rounded-2xl shadow-[0_22px_47px_rgba(28,82,121,0.22)]"}
                         >
                             <img className={'h-full w-full brightness-[45%] object-cover rounded-xl'}
-                                 src={r.img}
+                                 src={r.logo}
                                  alt="restaurant image"/>
                             <h1 className={'absolute text-[22px] text-[white] h-[19px] w-[230px] flex items-center justify-center text-center'}>
                                 {r.title.toUpperCase()}
