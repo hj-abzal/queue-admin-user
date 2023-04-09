@@ -11,7 +11,6 @@ import QRCode from "react-qr-code";
 import Trash from '../assets/icons/trash.svg'
 import QRIcon from '../assets/icons/qr.svg'
 import classNames from "classnames";
-import i18next from "i18next";
 
 
 export const OrderEditing: React.FC = () => {
@@ -63,82 +62,67 @@ export const OrderEditing: React.FC = () => {
         setIsBtnShowed(false)
     }
     const buttonClass = isBtnShowed ? 'rounded-lg bg-accent text-white p-1 disabled:opacity-40' : 'hidden'
-    console.log(i18next.language)
     return (
-        <div>
+        <div className={"h-full flex flex-col"}>
             <Header title={t('ORDERS_INFO.CHANGE')} backButton>
                 <div onClick={() => {
                     modalHandler(false, true)
                 }}><Trash/></div>
             </Header>
             <div
-                className={'flex flex-col items-center mt-5'}>
+                className={'h-full flex flex-col items-center mt-5 px-4'}>
                 <div
-                    className={'w-[250px] items-center flex flex-col'}>
+                    className={'w-[250px] flex justify-between text-lg'}>
+                    <div>{`${t('ORDERS_INFO.STATUS')}:`}</div>
                     <div
-                        className={'flex w-full justify-between text-lg'}>
-                        <div>{`${t('ORDERS_INFO.STATUS')}:`}</div>
-                        <div
-                            className={classNames('', {
+                        className={classNames('', {
                             'text-accent': !order?.is_ready,
                             'text-[green]': order?.is_ready
                         })}>{order?.is_ready ? t('ORDERS_INFO.DONE') : t('ORDERS_INFO.NOT_READY')}</div>
-                    </div>
-                    <div className={'mt-5'}>
+                </div>
+                <div className={'mt-5'}>
                         <textarea
                             className={'p-3 rounded-2xl h-[80px] w-[250px] resize-none'}
                             value={comment}
                             placeholder={t('ORDERS.COMMENT')!}
                             onChange={changeArea}/>
-                        <div className={'flex w-full justify-between'}>
-                            <button
-                                className={`${buttonClass} w-24`}
-                                onClick={() => {
+                    <div className={'flex w-full justify-between'}>
+                        <button
+                            className={`${buttonClass} w-24`}
+                            onClick={() => {
                                 onChangeOrderInfo(Number(restaurantId), Number(orderId), order!.is_ready, comment)
                             }}>{t('ORDERS_INFO.SAVE')}
-                            </button>
-                            <button
-                                className={`${buttonClass} w-20 bg-error text-sm`}
-                                onClick={
+                        </button>
+                        <button
+                            className={`${buttonClass} w-20 bg-error text-sm`}
+                            onClick={
                                 onCancelChangesHandler
                             }>{t('ORDERS_INFO.CANCEL')}
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className={'font-bold mt-12 text-4xl'}>
-                        {order?.key}
-                    </div>
-                    <div className={'flex mt-9 w-full justify-between'}>
-                        <main className={''}>
-                            <label
-                                className={'inline-flex items-center rounded-md cursor-pointer dark:text-gray-800'}>
-                                <input id="Toggle3"
-                                       type="checkbox"
-                                       className="hidden peer"
-                                       checked={order?.is_ready}/>
-                                <span
-                                    className={classNames('rounded-lg bg-accent mt-12 mb-6 h-16 w-28 text-white disabled:opacity-40 pt-4', {
-                                        'bg-[green] px-7': !order?.is_ready,
-                                        'bg-error px-4': order?.is_ready,
-                                        'bg-error px-2': i18next.language === 'kz'
-                                    })}
-                                    onClick={() => {
-                                        onChangeOrderInfo(Number(restaurantId), Number(orderId), !order?.is_ready, comment)
-                                    }}
-                                >{order?.is_ready ? t('ORDERS_INFO.NOT_READY') : t('ORDERS_INFO.DONE')}</span>
-                            </label>
-
-                        </main>
-                        <button
-                            className={'rounded-lg bg-accent mt-12 mb-6 text-white h-16 w-28 text-lg px-10'}
-                            onClick={() => {
-                                modalHandler(true, true)
-                            }}>
-                            <QRIcon/>
                         </button>
                     </div>
                 </div>
+
+                <div className={'font-bold mt-12 text-4xl'}>
+                    {order?.key}
+                </div>
+                <div className={'w-[250px] flex mt-9 justify-between'}>
+                    <button
+                        className={'min-w-[150px] rounded-lg bg-accent mt-12 mb-6 text-white h-16 text-lg px-4' + (order?.is_ready ? ' bg-accent px-4' : ' bg-[green] px-7')}
+                        onClick={() => {
+                            onChangeOrderInfo(Number(restaurantId), Number(orderId), !order?.is_ready, comment)
+                        }}
+                    >
+                        {order?.is_ready ? t('ORDERS_INFO.NOT_READY') : t('ORDERS_INFO.DONE')}
+                    </button>
+                    <button
+                        className={'rounded-lg bg-[#1C5279] mt-12 mb-6 text-white h-16 text-lg px-4'}
+                        onClick={() => {
+                            modalHandler(true, true)
+                        }}>
+                        <QRIcon/>
+                    </button>
+                </div>
+
             </div>
             {
                 isModalOpen &&

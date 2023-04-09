@@ -31,19 +31,19 @@ export const Table: React.FC<TableDefaultPropsType> = ({orders, variant, title, 
                         className={`overflow-y-auto h-[200px] border-2 flex flex-col items-center rounded-[0_0_20px_20px] ${classes[variant].table}`}>
                         <table
                             className="min-w-full border text-center font-light">
-                            <thead className="border-b font-medium dark:border-neutral-500">
-                            <tr className={''}>
+                            <thead className="border-b font-medium">
+                            <tr>
                                 <th
                                     scope="col"
                                     colSpan={2}
-                                    className="border-r border-neutral-500 w-20">
+                                    className="w-[50px] border-r border-neutral-500">
                                     {t('ORDERS.CODE')}
                                 </th>
 
                                 <th
                                     scope="col"
                                     colSpan={2}
-                                    className="border-r py-[0.5rem] border-neutral-500">
+                                    className="w-[300px] border-r py-[0.5rem] border-neutral-500">
                                     {t('ORDERS.COMMENTS')}
                                 </th>
                             </tr>
@@ -65,7 +65,7 @@ export const Table: React.FC<TableDefaultPropsType> = ({orders, variant, title, 
                                             className="whitespace-nowrap border-r px-6 py-4 border-neutral-500"
                                             colSpan={2}
                                         >
-                                            {order.description}
+                                            {order.description ? order.description : '---'}
                                         </td>
                                     </tr>
                                 )
