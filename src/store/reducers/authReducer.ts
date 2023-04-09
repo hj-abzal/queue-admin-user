@@ -89,6 +89,7 @@ export const setUserTC = (user: UserLogging, t: any) => async (dispatch: Dispatc
         const res = await authApi.login(user)
         dispatch(setLogged(true))
         localStorage.setItem('token', res.access_token)
+        localStorage.setItem('user', JSON.stringify(user))
     } catch (e) {
         showErrorToast(t("TOASTER_AUTH.ERROR"))
     } finally {

@@ -34,10 +34,10 @@ export const LoginForm: React.FC = () => {
     const dispatch = useDispatch<any>()
     const navigate = useNavigate()
     const isLogged = useSelector<AppStateType, boolean>(state => state.auth.isLogged)
-    const {values, handleSubmit, handleChange, touched, errors, setTouched} = useFormik({
+    const {values, handleSubmit, handleChange, touched, errors, setTouched, setValues} = useFormik({
         initialValues: {
-            password: 'qwerty',
-            email: '171-421@mail.ru',
+            password: '',
+            email: '',
         },
         validate,
         onSubmit: values => {
@@ -71,6 +71,13 @@ export const LoginForm: React.FC = () => {
             navigate(`/home/restaurants`)
         }
     }, [isLogged])
+
+    useEffect(() => {
+        const user = localStorage.getItem('user')
+        if (user) {
+            setValues(JSON.parse(user))
+        }
+    }, [])
     return (
         <form className="card-section" onSubmit={handleSubmit}>
             <h2 className="text-2xl font-bold mb-4 text-center">Queue Admin</h2>
