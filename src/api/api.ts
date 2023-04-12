@@ -62,10 +62,10 @@ export const ordersAPI = {
         return instance.get<ResponseOrderType>(`restaurants/${restaurantId}/orders/${orderId}`)
             .then(res => res.data)
     },
-    createOrder: (restaurant_id: number, description: string = '') => {
+    createOrder: (restaurant_id: number, key: string = '') => {
         return instance.post(`restaurants/${restaurant_id}/orders/`, {
             restaurant_id,
-            description
+            key
         })
             .then(res => res.data)
     },

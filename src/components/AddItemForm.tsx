@@ -20,7 +20,7 @@ export const AddItemForm: React.FC<{restaurantId: number}> = ({restaurantId}) =>
             <div className="min-w-[350px] flex justify-between mt-4">
                 <Input
                     className="w-[250px]"
-                    label={`${t("ORDERS.COMMENT")} (${t("ORDERS.NOT_NECESSARY")})`}
+                    label={"Номер задачи"}
                     value={comment}
                     onChangeText={text => setComment(text)}
                     onPressEnter={addOrder}

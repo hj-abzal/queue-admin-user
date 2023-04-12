@@ -81,11 +81,6 @@ export const OrderEditing: React.FC = () => {
                         })}>{order?.is_ready ? t('ORDERS_INFO.DONE') : t('ORDERS_INFO.NOT_READY')}</div>
                 </div>
                 <div className={'mt-5'}>
-                        <textarea
-                            className={'p-3 rounded-2xl h-[80px] w-[250px] resize-none'}
-                            value={comment}
-                            placeholder={t('ORDERS.COMMENT')!}
-                            onChange={changeArea}/>
                     <div className={'flex w-full justify-between'}>
                         <button
                             className={`${buttonClass} w-24`}
