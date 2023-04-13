@@ -46,7 +46,6 @@ export const LoginForm: React.FC = () => {
     });
 
     const onPasswordChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        e.currentTarget.value = latinRegex(e.currentTarget.value);
         handleChange(e);
     }, []);
 
