@@ -24,11 +24,11 @@ type ResponseRestaurantsType = {
     restaurants: ResponseOrdersType[]
 }
 
-const baseURL = 'https://queue-back-development.up.railway.app/'
-const localURL = 'http://localhost:8080/'
+const baseURL = 'https://queue-back-development.up.railway.app/api/'
+const localURL = 'http://localhost:8080/api'
 const prod = 'https://queue.up.railway.app'
 const instance = axios.create({
-    baseURL: prod,
+    baseURL: baseURL,
     headers: {
         withCredentials: true,
         "Access-Control-Allow-Origin": "*",
