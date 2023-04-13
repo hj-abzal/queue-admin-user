@@ -5,7 +5,7 @@ import {useTranslation} from "react-i18next";
 import {useNavigate, useParams} from "react-router-dom";
 import {AddItemForm} from "../components/AddItemForm";
 import {getOrdersTC, OrdersInitStateType} from "../store/reducers/ordersReducer";
-import {Table} from "../components/Table";
+import {TableSquares} from "../components/TableSquares";
 
 export const OrdersPage: React.FC = () => {
     const {restaurantId} = useParams()
@@ -28,18 +28,8 @@ export const OrdersPage: React.FC = () => {
         <div className="h-full flex flex-col">
             <AddItemForm restaurantId={Number(restaurantId)}/>
             <div className="flex-grow flex flex-col gap-4 justify-center overflow-y-auto">
-                <Table
-                    orders={notReady}
-                    variant={'primary'}
-                    title={t('ORDERS.NOT_READY')}
-                    onItemClicked={onClickOrder}
-                />
-                <Table
-                    orders={readyOrders}
-                    variant={'secondary'}
-                    title={t('ORDERS.DONE')}
-                    onItemClicked={onClickOrder}
-                />
+                <TableSquares orders={notReady} title={t('ORDERS.NOT_READY')} variant={'primary'} onItemClicked={onClickOrder}/>
+                <TableSquares orders={readyOrders} title={t('ORDERS.DONE')} variant={'secondary'} onItemClicked={onClickOrder}/>
             </div>
         </div>
     );

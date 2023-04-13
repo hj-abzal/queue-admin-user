@@ -9,7 +9,7 @@ type TableDefaultPropsType = {
     onItemClicked: (id: number) => void
 
 }
-export const Table: React.FC<TableDefaultPropsType> = ({orders, variant, title, onItemClicked}) => {
+export const TableDefault: React.FC<TableDefaultPropsType> = ({orders, variant, title, onItemClicked}) => {
     const {t} = useTranslation()
     const classes = {
         primary: {

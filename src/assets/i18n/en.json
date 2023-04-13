@@ -20,7 +20,9 @@
     "COMMENT": "Comment",
     "NOT_NECESSARY": "not necessary",
     "CODE": "Code",
-    "COMMENTS": "Comments"
+    "COMMENTS": "Comments",
+    "ORDER_NUMBER": "Order number"
+
   },
   "ORDERS_INFO": {
     "CHANGE": "Editing",

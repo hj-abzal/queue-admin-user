@@ -19,7 +19,8 @@
     "COMMENT": "Комментарий",
     "NOT_NECESSARY": "не обязательно",
     "CODE": "Код",
-    "COMMENTS": "Комментарии"
+    "COMMENTS": "Комментарии",
+    "ORDER_NUMBER": "Номер заказа"
   },
   "ORDERS_INFO": {
     "CHANGE": "Редактирование",

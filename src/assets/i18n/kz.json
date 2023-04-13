@@ -19,7 +19,9 @@
     "COMMENT": "Комментарий",
     "NOT_NECESSARY": "міндетті емес",
     "CODE": "Код",
-    "COMMENTS": "Комментарии"
+    "COMMENTS": "Комментарии",
+    "ORDER_NUMBER": "Тапсырыс нөмірі"
+
   },
   "ORDERS_INFO": {
     "CHANGE": "Өңдеу",
