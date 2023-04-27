@@ -4,29 +4,40 @@ import {showErrorToast, showSuccessToast, showWarningToast} from "../../componen
 import {NavigateFunction} from "react-router/dist/lib/hooks";
 import {AppStateType} from "../store";
 
+export enum USER_ROLES {
+    ADMIN = 'admin',
+    RESTAURANT = 'restaurant',
+    USER = 'user',
+    CASHIER = 'cashier'
+}
+
 //TYPES
 export type ActionType =
     | ReturnType<typeof setLogged>
     | ReturnType<typeof setUser>
     | ReturnType<typeof setRestaurants>
     | ReturnType<typeof setIsLoading>
+    | ReturnType<typeof setRestaurantSelected>
 
 type InitStateType = {
     isLogged: boolean;
     isLoading: boolean;
+    isRestaurantSelected: boolean;
     user: UserType;
     restaurants: RestaurantType[];
 }
+
 export type UserLogging = {
     email: string;
     password: string;
 }
+
 export type UserType = {
     id: number;
     username: string;
     email: string;
     access_token: string;
-    roles: string[];
+    roles: USER_ROLES[];
 }
 
 export type RestaurantType = {
@@ -40,6 +51,7 @@ export type RestaurantType = {
 const initState: InitStateType = {
     isLogged: false,
     isLoading: false,
+    isRestaurantSelected: false,
     user: {} as UserType,
     restaurants: [] as RestaurantType[]
 }
@@ -58,6 +70,12 @@ export const authReducer = (state: InitStateType = initState, action: ActionType
             return {
                 ...state,
                 isLoading: action.value
+            }
+        }
+        case 'SET_RESTAURANT_SELECTED': {
+            return {
+                ...state,
+                isRestaurantSelected: action.value
             }
         }
         default:
@@ -80,6 +98,10 @@ export const setRestaurants = (restaurants: RestaurantType[]) => (
 
 export const setIsLoading = (value: boolean) => ({
     type: 'SET_IS_LOADING' as const, value
+})
+
+export const setRestaurantSelected = (value: boolean) => ({
+    type: 'SET_RESTAURANT_SELECTED' as const, value
 })
 
 //THUNK CREATORS

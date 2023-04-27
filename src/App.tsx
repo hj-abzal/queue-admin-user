@@ -1,32 +1,34 @@
 import React from 'react';
-import {Navigate, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import './i18n'
-import {Home} from "./pages/Home";
-import {SingleCardPage} from "./components/SingleCardPage";
-import {OrdersPage} from "./pages/OrdersPage"
 import {useSelector} from "react-redux";
-import {OrderEditing} from "./components/OrderEditing";
 import {Loader} from "./components/Loader";
 import {AppStateType} from "./store/store";
-import {Restaurants} from "./pages/Restaurants";
-import {LoginForm} from "./pages/LoginForm";
-import {ProfilePage} from "./pages/ProfilePage";
+import {RolesGuard} from "./Routes/HOC/RolesWrapper";
+import {routes} from "./Routes/Routes";
+
 
 export const App: React.FC = () => {
     const loader = useSelector<AppStateType, boolean>(state => state.auth.isLoading);
-
     return (
         <div className="w-screen h-screen relative">
             {loader && <Loader/>}
             <Routes>
-                <Route path={'/login'} element={<SingleCardPage><LoginForm/></SingleCardPage>}/>
-                <Route path={'/home'} element={<Home/>}>
-                    <Route path={'/home/restaurants'} element={<Restaurants/>}/>
-                    <Route path={'/home/restaurants/:restaurantId'} element={<OrdersPage/>}/>
-                    <Route path={'/home/restaurants/:restaurantId/orders/:orderId'} element={<OrderEditing/>}/>
-                    <Route path={'/home/profile'} element={<ProfilePage/>}/>
-                </Route>
-                <Route path={'/'} element={<Navigate to={'/login'}/>}/>
+                {
+                    routes.map((route, index) => {
+                        return (
+                            <Route key={index} path={route.path} element={route.element}>
+                                {route.children?.length && route.children.map((child, index) => {
+                                    return (
+                                        <Route key={index} path={child.path} element={
+                                            <RolesGuard roles={child.guards || []}>{child.element}</RolesGuard>
+                                        }/>
+                                    )
+                                })}
+                            </Route>
+                        )
+                    })
+                }
             </Routes>
         </div>
     )

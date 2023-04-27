@@ -2,10 +2,10 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../store/store";
 import {useTranslation} from "react-i18next";
-import {useNavigate, useParams} from "react-router-dom";
-import {AddItemForm} from "../components/AddItemForm";
+import {NavLink, useNavigate, useParams} from "react-router-dom";
 import {getOrdersTC, OrdersInitStateType} from "../store/reducers/ordersReducer";
 import {Table} from "../components/Table";
+import {Header} from "../components/Header";
 
 export const OrdersPage: React.FC = () => {
     const {restaurantId} = useParams()
@@ -23,10 +23,12 @@ export const OrdersPage: React.FC = () => {
     const onClickOrder = (id: number) => {
         navigate(`/home/restaurants/${restaurantId}/orders/${id}`)
     }
-
+    const profileRoute = `/home/restaurants/${restaurantId}/profile`
     return (
         <div className="h-full flex flex-col">
-            <AddItemForm restaurantId={Number(restaurantId)}/>
+            <Header title={"Orders"}>
+                <NavLink to={profileRoute} className="flex items-center gap-2">profile</NavLink>
+            </Header>
             <div className="flex-grow flex flex-col gap-4 justify-center overflow-y-auto">
                 <Table
                     orders={notReady}

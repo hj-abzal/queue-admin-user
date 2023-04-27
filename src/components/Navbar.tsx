@@ -4,20 +4,32 @@ import profile from "../assets/animation/profile.json";
 import orders from "../assets/animation/orders.json";
 import {useLocation, useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
+import {USER_ROLES} from "../store/reducers/authReducer";
+import {ROUTES} from "../Routes/Routes";
 
 type ActiveBarType = 'restaurants' | 'profile';
+type NavbarPropsType = {
+    role: USER_ROLES
+}
+export const Navbar: React.FC<NavbarPropsType> = ({role}) => {
+    const tabs: {
+        [key in USER_ROLES]: string[]
+    } = {
+        [USER_ROLES.RESTAURANT]: [ROUTES.RESTAURANTS, ROUTES.CASHIERS],
+        [USER_ROLES.CASHIER]: [ROUTES.CREATE_ORDER, ROUTES.ORDERS],
+        [USER_ROLES.USER]: [],
+        [USER_ROLES.ADMIN]: [],
+    }
 
-export const Navbar: React.FC = () => {
     const [activeBar, setActiveBar] = React.useState<ActiveBarType>("restaurants");
     const navigate = useNavigate()
     const location = useLocation()
     const currentLocation = location.pathname.split('/')[2] as ActiveBarType;
     const {t} = useTranslation();
-
     const navbarIcons = [
         {
             name: t("NAVBAR.RESTAURANTS_NAME"),
-            url: 'restaurants',
+            url: ROUTES.RESTAURANTS,
             animation: orders,
             ref: useRef<any>(),
             animationSpeed: 3,
@@ -26,8 +38,38 @@ export const Navbar: React.FC = () => {
             labelClassName: 'text-[#1C5279] text-[12px] font-bold mt-1 text-center absolute bottom-[-20px]',
         },
         {
+            name: "cashiers",
+            url: ROUTES.CASHIERS,
+            animation: profile,
+            ref: useRef<any>(),
+            animationSpeed: 1,
+            wrapperClassName: "mb-2",
+            animationClassName: 'w-[4rem] h-[4rem]',
+            labelClassName: 'text-[#1C5279] text-[12px] font-bold mt-1 text-center absolute bottom-[-15px]',
+        },
+        {
             name: t("NAVBAR.PROFILE"),
-            url: 'profile',
+            url: ROUTES.RESTAURANT_DETAILS,
+            animation: profile,
+            ref: useRef<any>(),
+            animationSpeed: 1,
+            wrapperClassName: "mb-2",
+            animationClassName: 'w-[4rem] h-[4rem]',
+            labelClassName: 'text-[#1C5279] text-[12px] font-bold mt-1 text-center absolute bottom-[-15px]',
+        },
+        {
+            name: 'create',
+            url: ROUTES.CREATE_ORDER,
+            animation: profile,
+            ref: useRef<any>(),
+            animationSpeed: 1,
+            wrapperClassName: "mb-2",
+            animationClassName: 'w-[4rem] h-[4rem]',
+            labelClassName: 'text-[#1C5279] text-[12px] font-bold mt-1 text-center absolute bottom-[-15px]',
+        },
+        {
+            name: 'orders',
+            url: ROUTES.ORDERS,
             animation: profile,
             ref: useRef<any>(),
             animationSpeed: 1,
@@ -42,7 +84,11 @@ export const Navbar: React.FC = () => {
     }, [location])
 
     const onOrdersIconClick = (item: any) => {
-        navigate(`/home/${item.url}`);
+        const restaurantId = localStorage.getItem('restaurantId');
+        navigate(item.url.replace(':restaurantId', restaurantId || ''));
+
+
+        //TODO: refactor
         setActiveBar(item.name);
         item.ref.current.goToAndPlay(1, true);
         item.ref.current.setSpeed(item.animationSpeed);
@@ -51,22 +97,25 @@ export const Navbar: React.FC = () => {
     return (
         <div className={'h-[88px] bg-white text-white flex justify-evenly items-center pt-1 pb-3'}>
             {
-                navbarIcons.map((item) => {
-                    return (
-                        <div key={item.url} className={"flex flex-col items-center relative " + item.wrapperClassName}>
-                            <Lottie
-                                key={item.name}
-                                className={applyActiveStyle(item.url, item.animationClassName)}
-                                animationData={item.animation}
-                                lottieRef={item.ref}
-                                onClick={() => onOrdersIconClick(item)}
-                                loop={false}
-                                autoplay={currentLocation === item.name}
-                            />
-                            <p className={applyActiveStyle(item.url, item.labelClassName)}>{item.name}</p>
-                        </div>
-                    )
-                })
+                navbarIcons
+                    .filter(n => tabs[role]?.includes(n.url))
+                    .map((item) => {
+                        return (
+                            <div key={item.url}
+                                 className={"flex flex-col items-center relative " + item.wrapperClassName}>
+                                <Lottie
+                                    key={item.name}
+                                    className={applyActiveStyle(item.url, item.animationClassName)}
+                                    animationData={item.animation}
+                                    lottieRef={item.ref}
+                                    onClick={() => onOrdersIconClick(item)}
+                                    loop={false}
+                                    autoplay={currentLocation === item.name}
+                                />
+                                <p className={applyActiveStyle(item.url, item.labelClassName)}>{item.name}</p>
+                            </div>
+                        )
+                    })
             }
         </div>
     );

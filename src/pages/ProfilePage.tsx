@@ -5,14 +5,16 @@ import {Header} from "../components/Header";
 import Logout from '../assets/icons/logout.svg'
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {setLogged} from "../store/reducers/authReducer";
+import {setLogged, setRestaurantSelected} from "../store/reducers/authReducer";
 
 export const ProfilePage = () => {
     const dispatch = useDispatch<any>();
     const navigate = useNavigate();
     const logout = () => {
         localStorage.removeItem('token')
+        localStorage.removeItem('restaurantId')
         dispatch(setLogged(false))
+        dispatch(setRestaurantSelected(false))
         navigate('/login');
     }
 
