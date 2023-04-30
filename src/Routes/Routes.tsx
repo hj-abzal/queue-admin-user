@@ -6,7 +6,7 @@ import {USER_ROLES} from "../store/reducers/authReducer";
 import {OrdersPage} from "../pages/OrdersPage";
 import {Navigate} from "react-router-dom";
 import React from "react";
-import {CreateOrder} from "../pages/Create-order";
+import {CreateOrder} from "../pages/CreateOrder";
 import {ChooseRestaurant} from "../HOC/ChooseRestaurant";
 import {ProfilePage} from "../pages/ProfilePage";
 
