@@ -2,12 +2,11 @@ import React, {useEffect, useRef} from 'react';
 import Lottie from "lottie-react";
 import profile from "../assets/animation/profile.json";
 import orders from "../assets/animation/orders.json";
-import {useLocation, useNavigate} from "react-router-dom";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {USER_ROLES} from "../store/reducers/authReducer";
 import {ROUTES} from "../Routes/Routes";
 
-type ActiveBarType = 'restaurants' | 'profile';
 type NavbarPropsType = {
     role: USER_ROLES
 }
@@ -21,11 +20,13 @@ export const Navbar: React.FC<NavbarPropsType> = ({role}) => {
         [USER_ROLES.ADMIN]: [],
     }
 
-    const [activeBar, setActiveBar] = React.useState<ActiveBarType>("restaurants");
+    const [activeBar, setActiveBar] = React.useState<ROUTES>();
     const navigate = useNavigate()
     const location = useLocation()
-    const currentLocation = location.pathname.split('/')[2] as ActiveBarType;
     const {t} = useTranslation();
+
+    const {restaurantId} = useParams();
+
     const navbarIcons = [
         {
             name: t("NAVBAR.RESTAURANTS_NAME"),
@@ -80,19 +81,28 @@ export const Navbar: React.FC<NavbarPropsType> = ({role}) => {
     ]
 
     useEffect(() => {
-        setActiveBar(currentLocation)
+        updateActiveBar();
     }, [location])
+
+    const updateActiveBar = () => {
+        for (let routesKey in ROUTES) {
+            const value = ROUTES[routesKey as keyof typeof ROUTES];
+            const checkValue = typeof restaurantId === 'string' ? value.replace(':restaurantId', restaurantId) : value;
+            if (checkValue === location.pathname) {
+                setActiveBar(value)
+            }
+        }
+    }
+
 
     const onOrdersIconClick = (item: any) => {
         const restaurantId = localStorage.getItem('restaurantId');
         navigate(item.url.replace(':restaurantId', restaurantId || ''));
-
-
-        //TODO: refactor
         setActiveBar(item.name);
         item.ref.current.goToAndPlay(1, true);
         item.ref.current.setSpeed(item.animationSpeed);
     }
+
     const applyActiveStyle = (url: string, className: string) => url === activeBar ? className : `${className} opacity-50`
     return (
         <div className={'h-[88px] bg-white text-white flex justify-evenly items-center pt-1 pb-3'}>
@@ -110,7 +120,6 @@ export const Navbar: React.FC<NavbarPropsType> = ({role}) => {
                                     lottieRef={item.ref}
                                     onClick={() => onOrdersIconClick(item)}
                                     loop={false}
-                                    autoplay={currentLocation === item.name}
                                 />
                                 <p className={applyActiveStyle(item.url, item.labelClassName)}>{item.name}</p>
                             </div>
