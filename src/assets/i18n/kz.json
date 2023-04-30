@@ -39,7 +39,10 @@
   "ORDERS_CREATE": {
     "CREATE_PAGE": "Тапсырыс жасау",
     "WAITING": "Күтуде",
-    "CREATE_ORDER": "Тапсырыс жасау"
+    "CREATE_ORDER": "Тапсырыс жасау",
+    "ORDER_ERROR": "Тапсырыс нөмірі толтырылмаған",
+    "ORDER_ERROR_ZERO": "Тапсырыс нөмірі тек нөлдерден тұра алмайды",
+    "ORDER_NUMBER": "Тапсырыс нөмірі"
   },
   "PROFILE": {
     "USER_NAME": "Пайдаланушынын аты",

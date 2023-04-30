@@ -13,6 +13,7 @@ module.exports = {
                 error: '#DB1414',
                 accent: '#EF5630',
                 'accent-light': '#E99D8A',
+                main: "rgb(28, 82, 121)"
             }
         },
         screens: {

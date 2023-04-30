@@ -41,7 +41,10 @@
   "ORDERS_CREATE": {
     "CREATE_PAGE": "Creating an order",
     "WAITING": "Waiting",
-    "CREATE_ORDER": "Create an order"
+    "CREATE_ORDER": "Create an order",
+    "ORDER_ERROR": "The order number is not filled in",
+    "ORDER_ERROR_ZERO": "The order number cannot consist only of zeros",
+    "ORDER_NUMBER": "Order number"
   },
   "PROFILE": {
     "USER_NAME": "User name",
