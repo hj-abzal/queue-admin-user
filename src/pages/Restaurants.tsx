@@ -26,31 +26,36 @@ export const Restaurants = () => {
     }, [user]);
 
     return (
-        <div className="h-full flex flex-col">
+        <div className="flex flex-col">
             <Header title={t('NAVBAR.RESTAURANTS_NAME')}>
                 <NavLink to={`/home/restaurants/${restaurantId}/profile`}
-                         className="flex flex-col items-center w-full h-full">
+                         className="flex flex-col items-center">
                     <ProfileIcon/>
                 </NavLink>
             </Header>
-            <div className={"w-full bg-white flex flex-col mt-6 p-6 rounded-3xl"}>
+            <div className={"w-full bg-white flex flex-col mt-6 p-6 gap-y-9 rounded-3xl"}>
                 {restaurants.map(r => {
                     return (
                         <div key={r.id}
                              onClick={() => onClickRestaurant(r.id)}
-                             className={"relative flex justify-center items-center last:mb-0 mb-7 h-[180px] w-full gap-7 bg-white mb-0 mx-auto px-0 py-0 rounded-2xl shadow-[0_22px_47px_rgba(28,82,121,0.22)]"}
+                             className={"h-[180px] w-full flex items-center bg-slate-300 last:mb-0 mb-7  gap-7  mb-0 mx-auto px-0 py-0 rounded-2xl shadow"}
                         >
-                            <img className={'h-full w-full brightness-[45%] object-cover rounded-xl'}
-                                 src={r.logo}
-                                 alt="restaurant image"/>
-                            <h1 className={'absolute text-[22px] text-[white] h-[19px] w-[230px] flex items-center justify-center text-center'}>
-                                {r.title.toUpperCase()}
-                            </h1>
+                            <div
+                                className={'h-[180px] flex flex-col items-start justify-evenly text-[black] ml-2'}>
+                                <h1 className={'text-lg font-bold'}>
+                                    {r.title.toUpperCase()}
+                                </h1>
+                                <div>Mega Park</div>
+                                <div className={'w-full md:w-[260px]'}>
+                                    <p className={'text-ellipsis overflow-hidden whitespace-nowrap'}>{`${t('CASHIERS_PAGE.TITLE')}: Азиз, Абзал, Алдияр, Ернар, Шокан`}</p>
+                                </div>
+                            </div>
                         </div>
                     )
                 })}
             </div>
         </div>
+
     );
 };
 

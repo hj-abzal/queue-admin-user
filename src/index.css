@@ -20,4 +20,7 @@ body {
     .card-section {
         @apply flex flex-col flex-1
     }
+    .shadow{
+        @apply shadow-[0_22px_47px_rgba(28,82,121,0.22)];
+    }
 }

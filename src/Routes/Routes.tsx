@@ -9,6 +9,7 @@ import React from "react";
 import {CreateOrder} from "../pages/CreateOrder";
 import {ChooseRestaurant} from "../HOC/ChooseRestaurant";
 import {ProfilePage} from "../pages/ProfilePage";
+import {CashiersPage} from "../pages/CashiersPage";
 
 export enum ROUTES {
     LOGIN = '/login',
@@ -45,7 +46,7 @@ export const routes = [
             },
             {
                 path: ROUTES.CASHIERS,
-                element: <div>cashiers</div>,
+                element: <CashiersPage/>,
                 guards: [USER_ROLES.RESTAURANT]
             },
             {
