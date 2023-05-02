@@ -21,6 +21,13 @@
     "CODE": "Код",
     "COMMENTS": "Комментарии"
   },
+  "CASHIERS_PAGE": {
+    "TITLE": "Кассирлер",
+    "STATUS":"Мәртебесі",
+    "DELETE": "Жою",
+    "EMAIL": "Пошта расталмаған",
+    "NAME": "Аты"
+  },
   "ORDERS_INFO": {
     "CHANGE": "Өңдеу",
     "STATUS": "Мәртебесі",

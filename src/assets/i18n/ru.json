@@ -21,6 +21,13 @@
     "CODE": "Код",
     "COMMENTS": "Комментарии"
   },
+  "CASHIERS_PAGE": {
+    "TITLE": "Кассиры",
+    "STATUS":"Статус",
+    "DELETE": "Удалить",
+    "EMAIL": "Почта не подтверждена",
+    "NAME": "Имя"
+  },
   "ORDERS_INFO": {
     "CHANGE": "Редактирование",
     "STATUS": "Статус",

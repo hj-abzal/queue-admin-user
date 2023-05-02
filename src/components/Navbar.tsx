@@ -39,7 +39,7 @@ export const Navbar: React.FC<NavbarPropsType> = ({role}) => {
             labelClassName: 'text-[#1C5279] text-[12px] font-bold mt-1 text-center absolute bottom-[-20px]',
         },
         {
-            name: "cashiers",
+            name: t('CASHIERS_PAGE.TITLE'),
             url: ROUTES.CASHIERS,
             animation: profile,
             ref: useRef<any>(),
