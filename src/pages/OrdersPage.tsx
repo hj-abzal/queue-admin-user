@@ -6,6 +6,7 @@ import {NavLink, useNavigate, useParams} from "react-router-dom";
 import {getOrdersTC, OrdersInitStateType} from "../store/reducers/ordersReducer";
 import {Table} from "../components/Table";
 import {Header} from "../components/Header";
+import ProfileIcon from '../assets/icons/profileIcon.svg'
 
 export const OrdersPage: React.FC = () => {
     const {restaurantId} = useParams()
@@ -26,8 +27,10 @@ export const OrdersPage: React.FC = () => {
     const profileRoute = `/home/restaurants/${restaurantId}/profile`
     return (
         <div className="h-full flex flex-col">
-            <Header title={"Orders"}>
-                <NavLink to={profileRoute} className="flex items-center gap-2">profile</NavLink>
+            <Header title={t('NAVBAR.ORDERS')}>
+                <NavLink to={profileRoute} className="flex flex-col items-center w-full h-full">
+                    <ProfileIcon/>
+                </NavLink>
             </Header>
             <div className="flex-grow flex flex-col gap-4 justify-center overflow-y-auto">
                 <Table

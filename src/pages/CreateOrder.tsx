@@ -40,7 +40,7 @@ export const CreateOrder = () => {
     return (
         <div className="h-full flex flex-col">
             <div className="flex flex-grow flex-col">
-                <Header title={"Create new order"}/>
+                <Header title={t('ORDERS_CREATE.CREATE_ORDER')}/>
                 <div className="self-center mt-[30px] justify-center flex flex-col">
                     <span className="mb-[8px] text-main text-[22px] font-bold w-full">{t('ORDERS_CREATE.ORDER_NUMBER')}</span>
                     <div

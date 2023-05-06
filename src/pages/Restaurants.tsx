@@ -2,12 +2,14 @@ import React, {useEffect} from 'react';
 import {getRestaurantsTC, RestaurantType, UserType} from "../store/reducers/authReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../store/store";
-import {useNavigate} from "react-router-dom";
+import {NavLink, useNavigate, useParams} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {Header} from "../components/Header";
+import ProfileIcon from "../assets/icons/profileIcon.svg";
 
 export const Restaurants = () => {
     const navigate = useNavigate();
+    const {restaurantId} = useParams()
     const dispatch = useDispatch<any>();
     const restaurants = useSelector<AppStateType, RestaurantType[]>(state => state.auth.restaurants)
     const user = useSelector<AppStateType, UserType>(state => state.auth.user)
@@ -25,7 +27,12 @@ export const Restaurants = () => {
 
     return (
         <div className="h-full flex flex-col">
-            <Header title={t('NAVBAR.RESTAURANTS_NAME')}/>
+            <Header title={t('NAVBAR.RESTAURANTS_NAME')}>
+                <NavLink to={`/home/restaurants/${restaurantId}/profile`}
+                         className="flex flex-col items-center w-full h-full">
+                    <ProfileIcon/>
+                </NavLink>
+            </Header>
             <div className={"w-full bg-white flex flex-col mt-6 p-6 rounded-3xl"}>
                 {restaurants.map(r => {
                     return (

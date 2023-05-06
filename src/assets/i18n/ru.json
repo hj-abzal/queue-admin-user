@@ -40,7 +40,7 @@
   "ORDERS_CREATE": {
     "CREATE_PAGE": "Создание заказа",
     "WAITING": "В Ожидании",
-    "CREATE_ORDER": "Создать заказ",
+    "CREATE_ORDER": "Создать новый заказ",
     "ORDER_ERROR": "Номер заказа не заполнен",
     "ORDER_ERROR_ZERO": "Номер заказа не может состоять только из нулей",
     "ORDER_NUMBER": "Номер заказа"
@@ -57,7 +57,8 @@
   },
   "NAVBAR": {
     "PROFILE": "Профиль",
-    "RESTAURANTS_NAME": "Рестораны"
+    "RESTAURANTS_NAME": "Рестораны",
+    "ORDERS": "Заказы"
   },
   "TOASTER_AUTH": {
     "SUCCESS": "Сессия успешно возобновлена!",

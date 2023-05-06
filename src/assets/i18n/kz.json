@@ -39,7 +39,7 @@
   "ORDERS_CREATE": {
     "CREATE_PAGE": "Тапсырыс жасау",
     "WAITING": "Күтуде",
-    "CREATE_ORDER": "Тапсырыс жасау",
+    "CREATE_ORDER": "Жаңа тапсырыс жасау",
     "ORDER_ERROR": "Тапсырыс нөмірі толтырылмаған",
     "ORDER_ERROR_ZERO": "Тапсырыс нөмірі тек нөлдерден тұра алмайды",
     "ORDER_NUMBER": "Тапсырыс нөмірі"
@@ -56,7 +56,8 @@
   },
   "NAVBAR": {
     "PROFILE": "Профиль",
-    "RESTAURANTS_NAME": "Мейрамханалар"
+    "RESTAURANTS_NAME": "Мейрамханалар",
+    "ORDERS": "Тапсырыстар"
   },
   "TOASTER_AUTH": {
     "SUCCESS": "Сессия қайта басталды!",

@@ -41,7 +41,7 @@
   "ORDERS_CREATE": {
     "CREATE_PAGE": "Creating an order",
     "WAITING": "Waiting",
-    "CREATE_ORDER": "Create an order",
+    "CREATE_ORDER": "Create a new order",
     "ORDER_ERROR": "The order number is not filled in",
     "ORDER_ERROR_ZERO": "The order number cannot consist only of zeros",
     "ORDER_NUMBER": "Order number"
@@ -58,7 +58,8 @@
   },
   "NAVBAR": {
     "PROFILE": "Profile",
-    "RESTAURANTS_NAME": "Restaurants"
+    "RESTAURANTS_NAME": "Restaurants",
+    "ORDERS": "Orders"
   },
   "TOASTER_AUTH": {
     "SUCCESS": "The session has been successfully restored!",
