@@ -6,9 +6,11 @@ import Logout from '../assets/icons/logout.svg'
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {setLogged, setRestaurantSelected} from "../store/reducers/authReducer";
+import {useTranslation} from "react-i18next";
 
 export const ProfilePage = () => {
     const dispatch = useDispatch<any>();
+    const {t} = useTranslation()
     const navigate = useNavigate();
     const logout = () => {
         localStorage.removeItem('token')
@@ -20,7 +22,7 @@ export const ProfilePage = () => {
 
     return (
         <div className="h-full flex flex-col">
-            <Header title={'Профиль'} backButton>
+            <Header title={t('NAVBAR.PROFILE')} backButton>
                 <div onClick={logout}>
                     <Logout/>
                 </div>
