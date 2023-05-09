@@ -16,7 +16,7 @@ export const Restaurants = () => {
     const {t} = useTranslation();
 
     const onClickRestaurant = (id: number) => {
-        navigate(`/home/restaurants/${id}`)
+        navigate(`/home/restaurants/${id}/orders`)
     }
 
     useEffect(() => {
