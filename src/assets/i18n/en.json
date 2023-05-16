@@ -29,6 +29,14 @@
     "EMAIL": "Mail not confirmed",
     "NAME": "Name"
   },
+  "CREATE_EDIT_CASHIER": {
+    "CREATE": "Create",
+    "EDIT": "Edit",
+    "NAME": "Name",
+    "MAIL": "Email",
+    "PASSWORD": "Password",
+    "RESTAURANTS": "Restaurants"
+  },
   "ORDERS_INFO": {
     "CHANGE": "Editing",
     "STATUS": "Status",

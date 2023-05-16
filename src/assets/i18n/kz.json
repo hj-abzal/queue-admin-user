@@ -28,6 +28,14 @@
     "EMAIL": "Пошта расталмаған",
     "NAME": "Аты"
   },
+  "CREATE_EDIT_CASHIER": {
+    "CREATE": "Жасау",
+    "EDIT": "Өңдеу",
+    "NAME": "Аты",
+    "MAIL": "Пошта",
+    "PASSWORD": "Құпия сөз",
+    "RESTAURANTS": "Мейрамханалар"
+  },
   "ORDERS_INFO": {
     "CHANGE": "Өңдеу",
     "STATUS": "Мәртебесі",
