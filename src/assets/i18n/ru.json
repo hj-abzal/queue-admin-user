@@ -28,6 +28,14 @@
     "EMAIL": "Почта не подтверждена",
     "NAME": "Имя"
   },
+  "CREATE_EDIT_CASHIER": {
+    "CREATE": "Создание",
+    "EDIT": "Редактирование",
+    "NAME": "Имя",
+    "MAIL": "Почта",
+    "PASSWORD": "Пароль",
+    "RESTAURANTS": "Рестораны"
+},
   "ORDERS_INFO": {
     "CHANGE": "Редактирование",
     "STATUS": "Статус",

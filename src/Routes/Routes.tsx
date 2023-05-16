@@ -10,6 +10,7 @@ import {CreateOrder} from "../pages/CreateOrder";
 import {ChooseRestaurant} from "../HOC/ChooseRestaurant";
 import {ProfilePage} from "../pages/ProfilePage";
 import {CashiersPage} from "../pages/CashiersPage";
+import {CreateCashierPage} from "../pages/CreateCashierPage";
 
 export enum ROUTES {
     LOGIN = '/login',
@@ -19,6 +20,9 @@ export enum ROUTES {
     RESTAURANT_DETAILS = '/home/restaurants/:restaurantId/details',
 
     CASHIERS = '/home/restaurants/cashiers',
+    CREATE_CASHIER = '/home/restaurants/cashiers/create',
+    EDIT_CASHIER = '/home/restaurants/cashiers/:id/edit',
+
     CREATE_ORDER = '/home/restaurants/:restaurantId/orders/create',
     ORDERS = '/home/restaurants/:restaurantId/orders',
 
@@ -47,6 +51,16 @@ export const routes = [
             {
                 path: ROUTES.CASHIERS,
                 element: <CashiersPage/>,
+                guards: [USER_ROLES.RESTAURANT]
+            },
+            {
+                path:ROUTES.CREATE_CASHIER,
+                element: <CreateCashierPage create/>,
+                guards: [USER_ROLES.RESTAURANT]
+            },
+            {
+                path:ROUTES.EDIT_CASHIER,
+                element: <CreateCashierPage edit/>,
                 guards: [USER_ROLES.RESTAURANT]
             },
             {

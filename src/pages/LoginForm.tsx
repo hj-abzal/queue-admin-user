@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {setUserTC} from "../store/reducers/authReducer";
 import {AppStateType} from "../store/store";
 import {Language} from "../components/Language";
+import {emailRegex} from "../assets/helpers/regex";
 
 const validate = ({password, email}: initStateType) => {
     let errors = {};
@@ -34,16 +35,16 @@ export const LoginForm: React.FC = () => {
     const dispatch = useDispatch<any>()
     const navigate = useNavigate()
     const isLogged = useSelector<AppStateType, boolean>(state => state.auth.isLogged)
-    const {values, handleSubmit, handleChange, touched, errors, setTouched, setValues} = useFormik({
-        initialValues: {
-            password: '',
-            email: '',
-        },
-        validate,
-        onSubmit: values => {
-            dispatch(setUserTC(values, t))
-        },
-    });
+        const {values, handleSubmit, handleChange, touched, errors, setTouched, setValues} = useFormik({
+            initialValues: {
+                password: '',
+                email: '',
+            },
+            validate,
+            onSubmit: values => {
+                dispatch(setUserTC(values, t))
+            },
+        });
 
     const onPasswordChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         handleChange(e);
@@ -62,8 +63,6 @@ export const LoginForm: React.FC = () => {
     };
 
 
-    const emailRegex = (v: string) => v.replace(/[^A-Z-0-9_.-@]/gi, "").replace(/;/i, "");
-    const latinRegex = (v: string) => v.replace(/[^A-Z-0-9_]/gi, "");
 
     useEffect(() => {
         if (isLogged) {
